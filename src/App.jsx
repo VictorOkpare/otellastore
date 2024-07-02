@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import AOS from "aos"
 import "aos/dist/aos.css"
 import TopDesign from "./screens/TopDesign"
+import CustomizationScreen from "./screens/CustomizationScreen"
 
 const App = () => {
   
@@ -36,6 +37,7 @@ const App = () => {
      </main>
      <Products/>
      <TopDesign/>
+     <CustomizationScreen/>
      
     </Router>
   )
