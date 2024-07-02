@@ -1,15 +1,29 @@
-// import Header from "./components/Header"
+import React from "react"
 import Navbar from "./components/Navbar"
-// import Card from "./components/Card"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomeScreen from "./screens/HomeScreen"
 import Products from "./screens/Products"
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import AOS from "aos"
+import "aos/dist/aos.css"
+import TopDesign from "./screens/TopDesign"
 
-function App() {
+const App = () => {
+  
+    React.useEffect(()=>
+    {
+      AOS.init({
+        offset:100,
+        duration: 800,
+        easing: "ease-in-sine",
+        delay:100,
+      });
+      AOS.refresh();
+    }, [])
   
   return (
+
     <Router>
      {/* <Header/> */}
      <Navbar/>
@@ -20,6 +34,8 @@ function App() {
         <Route path="/products" element={<Products/>}/>
         </Routes>
      </main>
+     <Products/>
+     <TopDesign/>
      
     </Router>
   )
