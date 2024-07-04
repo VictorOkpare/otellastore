@@ -4,8 +4,6 @@ import image2 from '../assets/images/homeScreenImages/homeImg2.png'
 import image3 from '../assets/images/homeScreenImages/homeImg3.png'
 import image4 from '../assets/images/homeScreenImages/homeImg4.png'
 import Slider from 'react-slick'
-import Products from './Products'
-// import Card from '../components/Card'
 
 const ImageList = [
   {
@@ -50,7 +48,7 @@ const Hero = ()=>{}
 
 function HomeScreen() {
   return (
-    <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-400 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200'>
+    <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-white flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200'>
       {/* background pattern */}
      <div className="h-[700px] w-[700px] bg-primary/70 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
 

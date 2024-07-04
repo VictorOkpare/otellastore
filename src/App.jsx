@@ -9,9 +9,17 @@ import AOS from "aos"
 import "aos/dist/aos.css"
 import TopDesign from "./screens/TopDesign"
 import CustomizationScreen from "./screens/CustomizationScreen"
+import Subscription from "./screens/Subscription"
+import Testimonials from "./screens/Testimonials"
+import Footer from "./components/Footer"
+import Popup from "./components/Popup"
 
 const App = () => {
-  
+
+  const [orderPopup, setOrderPopup] = React.useState(false);
+  const handleOrderPopup = () =>{
+     setOrderPopup(!orderPopup)}
+
     React.useEffect(()=>
     {
       AOS.init({
@@ -25,20 +33,23 @@ const App = () => {
   
   return (
 
-    <Router>
-     {/* <Header/> */}
-     <Navbar/>
-     {/* <Card/> */}
-     <main>
+    <Router >
+      <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+      <Navbar handleOrderPopup={handleOrderPopup}/>
+      <main>
       <Routes>
         <Route path="/" element={<HomeScreen/>}/>
         <Route path="/products" element={<Products/>}/>
         </Routes>
-     </main>
-     <Products/>
-     <TopDesign/>
-     <CustomizationScreen/>
-     
+      </main>
+      <Products/>
+      <TopDesign/>
+      <CustomizationScreen/>
+      <Subscription/>
+      <Testimonials/>
+      <Footer/>
+      <Popup orderPopup={orderPopup} setOrderPopup = {setOrderPopup}/>
+      </div>
     </Router>
   )
 }
