@@ -34,8 +34,9 @@ const FooterLinks = [
 
 const Footer = () => {
   return (
-    <div style={BannerImg} className='text-white mb-20'>
-      <div className='container'>
+    <footer className='dark:bg-black'>
+    <div style={BannerImg} className='text-white '>
+      <div className='container '>
         <div className='grid md:grid-cols-3 pb-44 pt-5  '>
             {/* company details */}
             <div className='py-8 px-4'>
@@ -91,6 +92,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
+    </footer>
   )
 }
 

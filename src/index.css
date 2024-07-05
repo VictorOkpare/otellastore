@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+@media (max-width: 1200px) {
+    .responsive-gradient {
+        background: linear-gradient(to right , #776e6e, #5b5b5c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+@media (max-width: 1200px) { 
+    .responsive-gradient-dark {
+        background: linear-gradient(to right , #fff, #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

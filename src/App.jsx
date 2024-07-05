@@ -1,18 +1,19 @@
 import React from "react"
 import Navbar from "./components/Navbar"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import HomeScreen from "./screens/HomeScreen"
-import Products from "./screens/Products"
+import HomeScreen from "./screens/HomeScreenComponents/HomeScreen"
+import Contact from "./screens/Contact/Contact.jsx"
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import AOS from "aos"
 import "aos/dist/aos.css"
-import TopDesign from "./screens/TopDesign"
-import CustomizationScreen from "./screens/CustomizationScreen"
-import Subscription from "./screens/Subscription"
-import Testimonials from "./screens/Testimonials"
+
+
+
 import Footer from "./components/Footer"
 import Popup from "./components/Popup"
+import OrderTracking from "./screens/OrderTrackingScreen/OrderTracking"
 
 const App = () => {
 
@@ -39,14 +40,17 @@ const App = () => {
       <main>
       <Routes>
         <Route path="/" element={<HomeScreen/>}/>
-        <Route path="/products" element={<Products/>}/>
+        
+        <Route path="/orderTracking" element={<OrderTracking/>}/>
+
+        <Route path="/Contact" element={<Contact/>}/>
         </Routes>
       </main>
-      <Products/>
-      <TopDesign/>
-      <CustomizationScreen/>
-      <Subscription/>
-      <Testimonials/>
+      
+      
+    
+     
+
       <Footer/>
       <Popup orderPopup={orderPopup} setOrderPopup = {setOrderPopup}/>
       </div>

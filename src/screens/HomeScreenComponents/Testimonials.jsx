@@ -82,16 +82,16 @@ const Testimonials = () => {
   }
 
   return (
-    <div className='py-10 mb-10'>
-      <div className='container'>
+    <div className='py-10  dark:bg-black'>
+      <div className='container '>
         {/* header section */}
-        <div className='text-center mb-10 max-w-[600px] mx-auto'>
+        <div className='text-center mb-10 max-w-[600px] mx-auto '>
             <p data-aos="fade-up" className='text-sm text-primary'>What our customers are saying</p>
             <h1 data-aos="fade-up" lassName='text-3xl font-bold'>Testimonials</h1>
             <p data-aos="fade-up" className='text-xs text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolor veniam consequuntur. Inventore fuga unde  .</p>
           </div>
           {/* Testimonial cards */}
-          <div data-aos="zoom-in">
+          <div data-aos="zoom-in ">
           <Slider {...settings}>
             {TestimonialData.map((data)=>
             (
@@ -106,8 +106,8 @@ const Testimonials = () => {
                   </div>
                   <div className='flex flex-col items-center gap-4'>
                     <div className='space-y-3 '>
-                    <p className='text-xs text-gray-500 '>{data.text}</p>
-                    <h1 className='text-xl font-bold text-black/80 dark:text-light'>{data.name}</h1>
+                    <p className='text-xs text-white'>{data.text}</p>
+                    <h1 className='text-xl font-bold text-orange-500 dark:text-light'>{data.name}</h1>
 
                     </div>
                   </div>

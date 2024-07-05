@@ -1,10 +1,10 @@
 import React from 'react'
-import Img1 from '../assets/images/topDesignScreenImages/design1.jpg'
-import Img2 from '../assets/images/topDesignScreenImages/design2.jpg'
-import Img3 from '../assets/images/topDesignScreenImages/design3.jpg'
-import Img4 from '../assets/images/topDesignScreenImages/design8.jpg'
-import Img5 from '../assets/images/topDesignScreenImages/design6.jpg'
-import Img6 from '../assets/images/topDesignScreenImages/design7.jpg'
+import Img1 from '../../assets/images/topDesignScreenImages/design1.jpg'
+import Img2 from '../../assets/images/topDesignScreenImages/design2.jpg'
+import Img3 from '../../assets/images/topDesignScreenImages/design3.jpg'
+import Img4 from '../../assets/images/topDesignScreenImages/design8.jpg'
+import Img5 from '../../assets/images/topDesignScreenImages/design6.jpg'
+import Img6 from '../../assets/images/topDesignScreenImages/design7.jpg'
 
 const ProductsData = [
   {
@@ -47,7 +47,7 @@ const ProductsData = [
 
 function TopDesign() {
   return (
-    <div>
+    <div className='dark:bg-black'>
         <div className='container'>
         {/* Header section */}
         <div  className='text-left mb-24 '>

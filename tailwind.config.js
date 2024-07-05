@@ -1,24 +1,33 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./src/components/*.{js,jsx,ts,tsx}', "./index.html", './src/screens/*.{js,jsx,ts,tsx}'],
-  darkMode:"class",
+module.exports = {
+  mode: 'jit',
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}', 
+    './public/index.html'
+  ],
+  darkMode: 'class',
   theme: {
     extend: {
-      colors:{
+      fontFamily: {
+        robotoCondensed: ["Roboto Condensed", "sans-serif"],
+        kanit: []
+      },
+      screens: {
+        'max-sm': {'max': '1024px'}
+      },
+      colors: {
         primary: "#fea928",
         secondary: "#ed8900",
-        tertiary:"#ec9006"
+        tertiary: "#ec9006"
       },
       container: {
         center: true,
-        padding:{
+        padding: {
           DEFAULT: "1rem",
           sm: "3rem",
-
         }
       }
     },
   },
   plugins: [],
 }
-

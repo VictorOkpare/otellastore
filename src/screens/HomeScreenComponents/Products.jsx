@@ -1,8 +1,8 @@
 import React from 'react'
-import Img1 from '../assets/images/productsDataImages/Img1.png'
-import Img2 from '../assets/images/productsDataImages/Img2.png'
-import Img3 from '../assets/images/productsDataImages/Img3.png'
-import Img4 from '../assets/images/productsDataImages/longsleeve.png'
+import Img1 from '../../assets/images/productsDataImages/Img1.png'
+import Img2 from '../../assets/images/productsDataImages/Img2.png'
+import Img3 from '../../assets/images/productsDataImages/Img3.png'
+import Img4 from '../../assets/images/productsDataImages/longsleeve.png'
 
 
 
@@ -43,7 +43,7 @@ function Products() {
   }
 ]
   return (
-    <div className='mt-14 mb-12'>
+    <div className='mt-14 mb-12 dark:bg-black'>
       <div className='container'> 
         {/* Header section */}
           <div className='text-center mb-10 max-w-[600px] mx-auto'>
@@ -62,7 +62,7 @@ function Products() {
               data-aos-delay={data.aosDelay}>
                 <img src={data.img} 
                 alt="" 
-                className='h-[220px] w-[150px] object-cover rounded-md'/>
+                className='h-[220px] w-[150px] object-cover rounded-md dark:bg-gray-200'/>
                 <div>
                   <h3 className="font-semibold">{data.title}</h3>
                   <p className='text-sm text-gray-600'>

@@ -1,5 +1,5 @@
 import React from 'react'
-import BannerImg from '../assets/images/topDesignScreenImages/design8.jpg'
+import BannerImg from '../../assets/images/topDesignScreenImages/design8.jpg'
 import { GrSecure} from 'react-icons/gr'
 import { IoFastFood } from 'react-icons/io5';
 import { GiFoodTruck } from 'react-icons/gi'
@@ -7,7 +7,7 @@ import { GiFoodTruck } from 'react-icons/gi'
 const CustomizationScreen = () => {
   return (
     
-      <div className='min-h-[550px] flex justify-center items-center py-12 sm:py-0'>
+      <div className='min-h-[550px] flex justify-center items-center py-12 sm:py-0 dark:bg-black'>
         <div className='container'>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 items-center'>
                 {/* image section */}

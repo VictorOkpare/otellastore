@@ -1,22 +1,27 @@
 import React from 'react'
-import image1 from '../assets/images/homeScreenImages/homeImg1.png'
-import image2 from '../assets/images/homeScreenImages/homeImg2.png'
-import image3 from '../assets/images/homeScreenImages/homeImg3.png'
-import image4 from '../assets/images/homeScreenImages/homeImg4.png'
+import image1 from '../../assets/images/homeScreenImages/homeImg7.png'
+import image2 from '../../assets/images/homeScreenImages/homeImg9.png'
+import image3 from '../../assets/images/homeScreenImages/homeImg1.png'
+import image4 from '../../assets/images/homeScreenImages/homeImg10.png'
 import Slider from 'react-slick'
-
+import "../../index.css"
+import Products from "./Products"
+import TopDesign from "./TopDesign"
+import CustomizationScreen from "./CustomizationScreen"
+import Subscription from "./Subscription"
+import Testimonials from "./Testimonials"
 const ImageList = [
   {
     id:1,
     img:image1,
-    title: "Simple is the new stylish",
-    description: "Trending new roundneck, that fits all purpose of casual wears."
+    title: "Shop Design Print in 10 minutes",
+    description: "Get trending designs or customize to your taste."
   },
   {
     id:2,
-    img:image2,
-    title: 'Simplicity at its best!',
-    description: "Trending new roundneck, that fits all purpose of casual wears."
+    img:image2, 
+    title: 'Simple is the new stylish',
+    description: "Stylish has never been made simpler with our range of plain tshirts."
   },
   {
     id:3,
@@ -48,9 +53,10 @@ const Hero = ()=>{}
 
 function HomeScreen() {
   return (
-    <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-white flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200'>
+    <>
+    <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-white flex justify-center items-center dark:bg-black dark:text-white duration-200'>
       {/* background pattern */}
-     <div className="h-[700px] w-[700px] bg-primary/70 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
+     <div className="h-[700px] w-[700px] bg-orange-500 dark:bg-orange-500 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
 
      </div >
       {/* hero section */}
@@ -67,18 +73,21 @@ function HomeScreen() {
                 data-aos='zoom-out'
                 data-aos-duration = '500'
                 data-aos-once='true'
-                className='text-5xl sm:text-6xl lg:text-7xl font-bold'>{data.title}</h1>
+                className='text-black 
+               text-5xl sm:text-6xl lg:text-7xl font-bold dark:text-white 
+                '>{data.title}</h1>
                 <p 
                 data-aos='zoom-out'
                 data-aos-duration = '500'
                 data-aos-once='true'
-                className="text-sm">{data.description}</p>
+                className="text-sm 
+                text-black font-bold dark:text-orange-500 dark:max-sm:text-white ">{data.description}</p>
                 <div 
                 data-aos='zoom-out'
-                data-aos-duration = '500'
+                data-aos-duration = '700'
                 data-aos-once='true'>
-                  <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px- rounded-full">
-                    Order Now
+                  <button className="bg-orange-500 hover:scale-105 duration-200 text-white  py-2 px-4 rounded-full  ">
+                   <span className='font-bold text-black dark:text-white' > Order Now</span> 
                   </button>
                 </div>
   
@@ -97,8 +106,17 @@ function HomeScreen() {
           ))}
           </Slider>
       </div>
+     
     </div>
+    <Products/>
+    <TopDesign/>
+    <CustomizationScreen/>
+    <Subscription/>
+    <Testimonials/>
+    </>
   )
 }
 
 export default HomeScreen
+
+
