@@ -82,7 +82,7 @@ const Testimonials = () => {
   }
 
   return (
-    <div className='py-10  dark:bg-black'>
+    <div className='py-10  dark:bg-black '>
       <div className='container '>
         {/* header section */}
         <div className='text-center mb-10 max-w-[600px] mx-auto '>
@@ -106,7 +106,7 @@ const Testimonials = () => {
                   </div>
                   <div className='flex flex-col items-center gap-4'>
                     <div className='space-y-3 '>
-                    <p className='text-xs text-white'>{data.text}</p>
+                    <p className='text-xs text-black dark:text-white'>{data.text}</p>
                     <h1 className='text-xl font-bold text-orange-500 dark:text-light'>{data.name}</h1>
 
                     </div>
