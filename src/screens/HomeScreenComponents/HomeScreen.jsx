@@ -17,24 +17,14 @@ const ImageList = [
     title: "Shop Design Print in 10 minutes",
     description: "Get trending designs or customize to your taste."
   },
-  {
-    id:2,
-    img:image2, 
-    title: 'Simple is the new stylish',
-    description: "Stylish has never been made simpler with our range of plain tshirts."
-  },
+
   {
     id:3,
     img:image3,
     title: 'Simplicity at its best!',
     description: "Trending new roundneck, that fits all purpose of casual wears."
   }, 
-  {
-    id:4,
-    img:image4,
-    title: 'Simplicity at its best!',
-    description: "Trending new roundneck, that fits all purpose of casual wears."
-  }
+
 ]
 const Hero = ()=>{}
   var settings ={
@@ -56,7 +46,7 @@ function HomeScreen() {
     <>
     <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-white flex justify-center items-center dark:bg-black dark:text-white duration-200'>
       {/* background pattern */}
-     <div className="h-[700px] w-[700px] bg-orange-500 dark:bg-orange-500 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
+     <div className="h-[600px] w-[300px] max-sm:h-[400px] max-sm:w-[700px] bg-orange-500 dark:bg-orange-500 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
 
      </div >
       {/* hero section */}
@@ -68,13 +58,15 @@ function HomeScreen() {
             <div>
             <div className='grid grid-cols-1 sm:grid-cols-2'>
               {/* text content section */}
-              <div className='flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10'>
+              <div className='  
+              flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10'>
                 <h1  
                 data-aos='zoom-out'
                 data-aos-duration = '500'
                 data-aos-once='true'
                 className='text-black 
                text-5xl sm:text-6xl lg:text-7xl font-bold dark:text-white 
+                
                 '>{data.title}</h1>
                 <p 
                 data-aos='zoom-out'
@@ -87,7 +79,7 @@ function HomeScreen() {
                 data-aos-duration = '700'
                 data-aos-once='true'>
                   <button className="bg-orange-500 hover:scale-105 duration-200 text-white  py-2 px-4 rounded-full  ">
-                   <span className='font-bold text-black dark:text-white' > Order Now</span> 
+                   <span className='font-bold text-white ' > Order Now</span> 
                   </button>
                 </div>
   

@@ -10,8 +10,9 @@ module.exports = {
     extend: {
       fontFamily: {
         robotoCondensed: ["Roboto Condensed", "sans-serif"],
-        kanit: []
-      },
+        lobster: ["Lobster", "sans-serif"],
+        margarine:["Margarine", "sans-serif"],
+        nunito:["Nunito Sans", "sans-serif"]      },
       screens: {
         'max-sm': {'max': '1024px'}
       },

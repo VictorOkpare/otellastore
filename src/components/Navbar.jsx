@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link  } from 'react-router-dom'
 import { IoMdSearch } from 'react-icons/io'
-import { FaCartShopping } from 'react-icons/fa6'
+import { MdOutlineLightMode } from "react-icons/md"
+import { GiShoppingCart } from "react-icons/gi";
+
 import Darkmode from './Darkmode'
-import { FaUserCircle, FaCaretDown } from "react-icons/fa";
+import { FaRegUser, FaCaretDown } from "react-icons/fa";
 
 
 
@@ -13,18 +15,14 @@ const Menu = [
     name: "Home",
     link: "/#"
   },
+
   {
-    id:2, 
-    name: "Products",
-    link: "/#",
-  },
-  {
-    id:3,
+    id:2,
     name:"Customization",
     link: "/#"
   },
   {
-    id:4,
+    id:3,
     name: 'Order Tracking',
     link: "/orderTracking", 
 
@@ -32,7 +30,7 @@ const Menu = [
 
   },
   {
-    id:5,
+    id:4,
     name: 'Contact',
     link: "/Contact", 
 
@@ -44,22 +42,22 @@ const Menu = [
 const DropdownLinks = [
   {
     id:1,
-    name: "Plain Tshirts",
+    name: "Roundneck Tshirts",
     link: "/#"
   },
   {
     id:2,
-    name: "Trending Designs",
+    name: "Polo Tshirts",
     link: "/#"
   },
   {
     id:3,
-    name: "Kids Tshirts",
+    name: "V-neck Tshirts",
     link: "/#"
   },
   {
     id:4,
-    name: "New Designs",
+    name: "Kids Tshirts",
     link: "/#"
   }
 ]
@@ -71,8 +69,8 @@ const Navbar = ({handleOrderPopup}) => {
       <div className='bg-white dark:bg-black py-2'>
         <div className='container flex justify-between items-center'>
             <div> 
-                <Link to='#' className=' font-extrabold w-10   flex gap-2 text-black font-robotoCondensed text-3xl dark:text-white'>
-                Otellastore
+                <Link to='#' className=' font-extrabold w-10   flex gap-2 text-black font-robotoCondensed text-lg dark:text-white'>
+               <span className='bg-orange-500 p-2 text-white rounded-full font-nunito'>Otella<span className=' text-orange-500 px-1 bg-white rounded-full'>store</span></span>
                 </Link>
             </div>
             {/* search bar */}
@@ -80,22 +78,23 @@ const Navbar = ({handleOrderPopup}) => {
                 <div className='group relative hidden sm:block'>
                     <input type="text"
                     placeholder='search ...'
-                    className='w-[200px] sm:w-[200px] group-hover:w-[300px] translate-all duration-300 rounded-full border border-darkgray-600 px-2 py-1 focus:outline-none focus:border-1 focus:border-orange-400 dark:border-gray-500 dark:bg-gray-800' />
-                    <IoMdSearch className='text-gray-500 group-hover:text-orange-500 hover:bg-orange-500 absolute top-1/2 -translate-y-1/2 right-3'/>
+                    className='w-[200px] sm:w-[200px] group-hover:w-[300px] translate-all duration-300 rounded-full border border-black px-2 py-1 focus:outline-none focus:border-1 focus:border-black dark:border-gray-500 dark:bg-gray-800' />
+                    <IoMdSearch className='text-black text-lg group-hover:text-orange-500  absolute top-1/2 -translate-y-1/2 right-3'/>
                 </div>
             </div>
             <div className='flex gap-8'>
             {/* order button */}
-            <button onClick={()=> handleOrderPopup()} className='bg-black transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items center gap-3 group dark:bg-orange-500'>
+            <button onClick={()=> handleOrderPopup()} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
                 <span
                 className='group-hover:block hidden transition-all duration-200 '>Cart</span>
-                <FaCartShopping className='text-xl text-white dark:text-black drop-shadow-sm cursor-pointer '/>
+                <GiShoppingCart className='text-2xl  text-white dark:text-black drop-shadow-sm cursor-pointer '/>
 
             </button>
             {/* login */}
             <div>
-              <button>
-                <FaUserCircle className='text-2xl'/>
+              <button className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
+                <span className='group-hover:block hidden transition-all duration-10000 '  >Sign-up</span>
+                <FaRegUser className='text-xl cursor-pointer drop-shadow-sm  '/>
               </button>
             </div>
             
@@ -106,13 +105,15 @@ const Navbar = ({handleOrderPopup}) => {
         </div>
       </div>
       </div>
+     
         {/* lower Navbar */}
-      <div data-aos="zoom-in" className='flex justify-center bg-black dark:bg-gray-900 text-white font-robotoCondensed'>
-        <ul className='sm:flex hidden items-center gap-8'>
+      <div data-aos="zoom-in" className='flex justify-center bg-orange-500   text-white font-md text-sm font-robotoCondensed
+       '>
+        <ul className='sm:flex hidden items-center gap-5 flex-wrap'>
           {
             Menu.map((data)=>(
               <li key={data.id}>
-                <Link className='inline-block px- hover:text-orange-500 duration-200' to={data.link}>{data.name}{data.icon}</Link>
+                <Link className='inline-block px- hover:font-extrabold duration-1000 ' to={data.link}>{data.name}{data.icon}</Link>
               </li>
             ))
           }
