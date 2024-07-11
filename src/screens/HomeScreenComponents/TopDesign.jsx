@@ -51,9 +51,9 @@ function TopDesign() {
         <div className='container'>
         {/* Header section */}
         <div  className='text-left mb-24 '>
-            <p data-aos="fade-up" className='text-sm text-secondary'>Trending Designs</p>
+            <p data-aos="fade-up" className='text-sm text-secondary'>Designs trending now</p>
             <h1 data-aos="fade-up" className='text-3xl font-bold'>Designs</h1>
-            <p data-aos="fade-up" className='text-xs text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolor veniam consequuntur. Inventore fuga unde </p>
+            <p data-aos="fade-up" className='text-xs text-gray-400'>view a wide range of trendy designs to customize your t-shirts in less than 10 minutes </p>
           </div>
           {/* body section */}
         <div

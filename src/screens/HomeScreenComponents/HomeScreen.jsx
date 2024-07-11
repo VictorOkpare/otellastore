@@ -10,6 +10,7 @@ import TopDesign from "./TopDesign"
 import CustomizationScreen from "./CustomizationScreen"
 import Subscription from "./Subscription"
 import Testimonials from "./Testimonials"
+import Card from '../../components/Card'
 const ImageList = [
   {
     id:1,
@@ -60,6 +61,9 @@ function HomeScreen() {
               {/* text content section */}
               <div className='  
               flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10'>
+
+
+
                 <h1  
                 data-aos='zoom-out'
                 data-aos-duration = '500'
@@ -96,6 +100,7 @@ function HomeScreen() {
           </div>
           </div>
           ))}
+         
           </Slider>
       </div>
      

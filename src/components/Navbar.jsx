@@ -43,7 +43,7 @@ const DropdownLinks = [
   {
     id:1,
     name: "Roundneck Tshirts",
-    link: "/#"
+    link: "/Roundneck"
   },
   {
     id:2,
@@ -84,7 +84,7 @@ const Navbar = ({handleOrderPopup}) => {
             </div>
             <div className='flex gap-8'>
             {/* order button */}
-            <button onClick={()=> handleOrderPopup()} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
+            <button className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-1 group dark:bg-orange-500'>
                 <span
                 className='group-hover:block hidden transition-all duration-200 '>Cart</span>
                 <GiShoppingCart className='text-2xl  text-white dark:text-black drop-shadow-sm cursor-pointer '/>
@@ -92,7 +92,7 @@ const Navbar = ({handleOrderPopup}) => {
             </button>
             {/* login */}
             <div>
-              <button className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
+              <button onClick={()=> handleOrderPopup()} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
                 <span className='group-hover:block hidden transition-all duration-10000 '  >Sign-up</span>
                 <FaRegUser className='text-xl cursor-pointer drop-shadow-sm  '/>
               </button>

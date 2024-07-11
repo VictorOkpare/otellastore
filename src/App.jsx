@@ -1,8 +1,12 @@
 import React from "react"
-import Navbar from "./components/Navbar"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+
+import Navbar from "./components/Navbar"
 import HomeScreen from "./screens/HomeScreenComponents/HomeScreen"
 import Contact from "./screens/Contact/Contact.jsx"
+import ProductScreen from "./screens/ProductScreen/ProductScreen.jsx"
+import Roundneck from "./screens/ProductScreen/Roundneck.jsx"
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -35,21 +39,20 @@ const App = () => {
   return (
 
     <Router >
-      <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+      <div className="bg-white dark:bg-black dark:text-white duration-200">
       <Navbar handleOrderPopup={handleOrderPopup}/>
       <main>
       <Routes>
-        <Route path="/" element={<HomeScreen/>}/>
+        <Route path="/" element={<HomeScreen/>} exact />
         
         <Route path="/orderTracking" element={<OrderTracking/>}/>
 
         <Route path="/Contact" element={<Contact/>}/>
+        <Route path="/ProductScreen" element={<ProductScreen/>}/>
+        <Route path="/Roundneck" element={<Roundneck/>}/>
         </Routes>
       </main>
-      
-      
-    
-     
+         
 
       <Footer/>
       <Popup orderPopup={orderPopup} setOrderPopup = {setOrderPopup}/>
