@@ -25,7 +25,7 @@ const Navbar = ({ handleOrderPopup }) => {
   const handleMenu = () => setOpen((prev) => !prev);
 
   return (
-    <div className='shadow-md bg-white dark:bg-black dark:text-white duration-200 relative z-40'>
+    <div className=' shadow-md bg-white dark:bg-black dark:text-white duration-200 relative z-40'>
       {/* Upper Navbar */}
       <div className='bg-white dark:bg-black py-2'>
         <div className='container flex justify-between items-center'>
