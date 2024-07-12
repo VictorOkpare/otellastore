@@ -20,3 +20,23 @@
         -webkit-text-fill-color: transparent;
     }
 }
+
+
+/* Add this CSS to your global styles or a CSS module */
+.mobile-menu {
+    @apply fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-800;
+    @apply flex justify-center items-center;
+    @apply gap-5;
+  }
+  
+  .mobile-menu ul {
+    @apply flex flex-col items-center;
+  }
+  
+  .mobile-menu li {
+    @apply inline-block;
+  }
+  
+  .mobile-menu a {
+    @apply inline-block px-2 hover:font-extrabold duration-1000;
+  }
