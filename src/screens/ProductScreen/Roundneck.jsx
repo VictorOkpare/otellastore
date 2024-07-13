@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import Imagedata from './Roundneck.json';
+import Cart from '../../components/Cart';
 
 function Roundneck() {
     const [selectedItem, setSelectedItem] = useState(Imagedata[0]);
-    const [selectedBrand, setSelectedBrand] = useState(selectedItem.brand[0]);
+    const [selectedBrand, setSelectedBrand] = useState(selectedItem.brand[0].brandname);
     const [selectedSize, setSelectedSize] = useState('');
     const [quantity, setQuantity] = useState(1);
+    const [cartItems, setCartItems] = useState([]);
 
     const handleImageClick = (item) => {
         setSelectedItem(item);
-        setSelectedBrand(item.brand[0]);
+        setSelectedBrand(item.brand[0].brandname);
         setSelectedSize('');
+        setQuantity(1);
     };
 
     const handleColorChange = (event) => {
@@ -18,127 +21,130 @@ function Roundneck() {
         const newItem = Imagedata.find(item => item.colour === selectedColor);
         if (newItem) {
             setSelectedItem(newItem);
-            setSelectedBrand(newItem.brand[0]);
+            setSelectedBrand(newItem.brand[0].brandname);
             setSelectedSize('');
+            setQuantity(1);
         }
     };
 
     const handleBrandChange = (event) => {
-        const brandName = event.target.value;
-        const brand = selectedItem.brand.find(b => b.name === brandName);
-        if (brand) {
-            setSelectedBrand(brand);
-            setSelectedSize('');
-        }
+        setSelectedBrand(event.target.value);
     };
 
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
     };
 
-    const handleQuantityChange = (event) => {
-        setQuantity(event.target.value);
+    const getPrice = () => {
+        const brand = selectedItem.brand.find(b => b.brandname === selectedBrand);
+        if (brand) {
+            return brand.price;
+        }
+        return 0;
     };
 
     const handleAddToCart = () => {
-        const selectedSizeObj = selectedBrand.size.find(s => s.name === selectedSize);
-        if (selectedSizeObj && selectedSizeObj.quantity >= quantity) {
-            alert(`${quantity} ${selectedSize} size(s) added to cart!`);
-            selectedSizeObj.quantity -= quantity;
-        } else {
-            alert('Out of stock or not enough quantity!');
-        }
+        const item = {
+            ...selectedItem,
+            brand: selectedBrand,
+            size: selectedSize,
+            quantity: parseInt(quantity),
+            price: getPrice()
+        };
+        setCartItems([...cartItems, item]);
+    };
+
+    const handleRemoveFromCart = (index) => {
+        const newCartItems = [...cartItems];
+        newCartItems.splice(index, 1);
+        setCartItems(newCartItems);
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center p-6 bg-white dark:bg-black text-black dark:text-white">
-            <div className="flex w-full max-w-4xl mx-auto">
-                {/* Big Image Roundneck */}
-                <div className="w-1/3">
-                    <img src={selectedItem.img} alt="" className="w-full" />
-                    {/* Small Images Roundneck */}
-                    <div className="flex justify-between w-full mt-4">
-                        {Imagedata.map((item) => (
-                            <div key={item.id} className="w-12 border border-black overflow-hidden cursor-pointer">
-                                <img
-                                    src={item.img}
-                                    alt=""
-                                    className="transition-transform transform hover:scale-110"
-                                    onClick={() => handleImageClick(item)}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                {/* Product details section */}
-                <div className="ml-6 flex-1">
-                    <div className="text-2xl font-bold">{selectedItem.title}</div>
-                    <div className="text-lg mb-2">{selectedItem.colour}</div>
-                    <form className="mb-4">
-                        <label htmlFor="colours" className="block mb-1">Select a different colour</label>
-                        <select
-                            name="colours"
-                            id="colours"
-                            onChange={handleColorChange}
-                            className="w-full p-2 border border-black bg-white dark:bg-black"
-                        >
-                            {Imagedata.map((data) => (
-                                <option value={data.colour} key={data.id}>{data.colour}</option>
+        <>
+            <div className="dark:bg-gray-900 bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto mt-10">
+                <div className='flex w-full'>
+                    {/* Big Image Roundneck */}
+                    <div className='w-[250px]'>
+                        <img src={selectedItem.img} alt="" className='w-inherit' />
+                        {/* Small Images Roundneck */}
+                        <div className='flex justify-between w-full mt-[15px]'>
+                            {Imagedata.map((item) => (
+                                <div key={item.id} className='w-[50px] overflow-hidden border-[1.5px] border-solid'>
+                                    <img
+                                        src={item.img}
+                                        alt=""
+                                        className='transition-all duration-[0.3s] ease-linear w-inherit cursor-pointer hover:scale-110'
+                                        onClick={() => handleImageClick(item)}
+                                    />
+                                </div>
                             ))}
-                        </select>
-                    </form>
-                    <form className="mb-4">
-                        <label htmlFor="brands" className="block mb-1">Select from our range of brands</label>
-                        <select
-                            name="brands"
-                            id="brands"
-                            onChange={handleBrandChange}
-                            className="w-full p-2 border border-black bg-white dark:bg-black"
-                        >
-                            {selectedItem.brand.map((brand, index) => (
-                                <option value={brand.name} key={index}>{brand.name}</option>
-                            ))}
-                        </select>
-                    </form>
-                    <form className="mb-4">
-                        <label htmlFor="sizes" className="block mb-1">Select size</label>
-                        <select
-                            name="sizes"
-                            id="sizes"
-                            onChange={handleSizeChange}
-                            className="w-full p-2 border border-black bg-white dark:bg-black"
-                        >
-                            <option value="">Select size</option>
-                            {selectedBrand.size.map((size, index) => (
-                                <option value={size.name} key={index}>{size.name}</option>
-                            ))}
-                        </select>
-                    </form>
-                    <div className="mb-4">
-                        <label htmlFor="quantity" className="block mb-1">Quantity</label>
-                        <input
-                            type="number"
-                            id="quantity"
-                            value={quantity}
-                            onChange={handleQuantityChange}
-                            className="w-full p-2 border border-black bg-white dark:bg-black"
-                            min="1"
-                        />
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <div className="text-lg">Selected Brand: {selectedBrand.name}</div>
-                        <div className="text-lg">Selected Colour: {selectedItem.colour}</div>
-                        <div className="text-lg">Selected Size: {selectedSize}</div>
+
+                    {/* Product details section */}
+                    <div className='ml-6'>
+                        <div className='pname dark:text-white text-black text-xl font-bold'>{selectedItem.title}</div>
+                        <div className='dark:text-gray-300 text-gray-600 mb-2'>Color: {selectedItem.colour}</div>
+                            {/* Colour Selection */}
+                        <form className='flex flex-col mb-4'>
+                            <label htmlFor="colours" className='dark:text-gray-300 text-gray-600'>Select a different colour</label>
+                            <select name="colours" id="colours" onChange={handleColorChange} className='p-2 border rounded mb-4'>
+                                {Imagedata.map((data) => (
+                                    <option value={data.colour} key={data.id}>{data.colour}</option>
+                                ))}
+                            </select>
+                        </form>
+                            {/* brand selection */}
+                        <form className='flex flex-col mb-4'>
+                            <label htmlFor="brands" className='dark:text-gray-300 text-gray-600'>Select from our range of brands</label>
+                            <select name="brands" id="brands" onChange={handleBrandChange} className='p-2 border rounded mb-4'>
+                                {selectedItem.brand.map((brand, index) => (
+                                    <option value={brand.brandname} key={index}>{brand.brandname}</option>
+                                ))}
+                            </select>
+                        </form>
+                            {/* size selection  and quantity*/}
+                        <form className='flex flex-col mb-4'>
+                            <label htmlFor="sizes" className='dark:text-gray-300 text-gray-600'>Select Size</label>
+                            <select name="sizes" id="sizes" onChange={handleSizeChange} className='p-2 border rounded mb-4'>
+                                {selectedItem.brand.find(b => b.brandname === selectedBrand)?.size.map((size, index) => (
+                                    <option value={size.sizename} key={index}>{size.sizename}</option>
+                                ))}
+                            </select>
+                        </form>
+                        <div className='flex items-center mb-4'>
+                            <label htmlFor="quantity" className='dark:text-gray-300 text-gray-600 mr-2'>Quantity</label>
+                            <input
+                                type="number"
+                                id="quantity"
+                                min="1"
+                                value={quantity}
+                                onChange={(e) => setQuantity(e.target.value)}
+                                className='p-2 border rounded w-16'
+                            />
+                        </div>
+                                {/* Price section */}
+                        <div className='mb-4'>
+                            <p className="dark:text-gray-300 text-gray-600">Price: ₦{getPrice()}</p>
+                        </div>
+                                {/* Cart section */}
+                        <button
+                            onClick={handleAddToCart}
+                            className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition"
+                        >
+                            Add to Cart
+                        </button>
+                        <div className="mt-4">
+                            <p className="dark:text-gray-300 text-gray-600">Selected Brand: {selectedBrand}</p>
+                            <p className="dark:text-gray-300 text-gray-600">Selected Color: {selectedItem.colour}</p>
+                            <p className="dark:text-gray-300 text-gray-600">Selected Size: {selectedSize}</p>
+                        </div>
                     </div>
-                    <button
-                        onClick={handleAddToCart}
-                        className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
-                    >
-                        Add to Cart
-                    </button>
                 </div>
             </div>
-        </div>
+            <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+        </>
     );
 }
 

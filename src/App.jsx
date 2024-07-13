@@ -7,6 +7,7 @@ import HomeScreen from "./screens/HomeScreenComponents/HomeScreen"
 import Contact from "./screens/Contact/Contact.jsx"
 import ProductScreen from "./screens/ProductScreen/ProductScreen.jsx"
 import Roundneck from "./screens/ProductScreen/Roundneck.jsx"
+import Cart from "./components/Cart.jsx"
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/Contact" element={<Contact/>}/>
         <Route path="/ProductScreen" element={<ProductScreen/>}/>
         <Route path="/Roundneck" element={<Roundneck/>}/>
+        <Route path="/Cart" element={<Cart/>}/>
         </Routes>
       </main>
          

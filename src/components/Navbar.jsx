@@ -69,10 +69,12 @@ const Navbar = ({ handleOrderPopup }) => {
 
           <div className='flex gap-8'>
             {/* Cart button */}
+            <Link to="/Cart">
             <button className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-1 group dark:bg-orange-500'>
               <span className='group-hover:block hidden transition-all duration-200'>Cart</span>
               <GiShoppingCart className='text-2xl text-white dark:text-black drop-shadow-sm cursor-pointer' />
             </button>
+            </Link>
             
             {/* Login button */}
             <button onClick={handleOrderPopup} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
