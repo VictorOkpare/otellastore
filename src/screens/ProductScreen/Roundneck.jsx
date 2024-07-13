@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Imagedata from './Roundneck.json';
-import Cart from '../../components/Cart';
+import { CartContext } from '../../components/CartContext.jsx';
 
 function Roundneck() {
     const [selectedItem, setSelectedItem] = useState(Imagedata[0]);
     const [selectedBrand, setSelectedBrand] = useState(selectedItem.brand[0].brandname);
     const [selectedSize, setSelectedSize] = useState('');
     const [quantity, setQuantity] = useState(1);
-    const [cartItems, setCartItems] = useState([]);
+    const { cartItems, setCartItems } = useContext(CartContext);
+    const [showSummary, setShowSummary] = useState(false);
 
     const handleImageClick = (item) => {
         setSelectedItem(item);
@@ -52,6 +53,7 @@ function Roundneck() {
             price: getPrice()
         };
         setCartItems([...cartItems, item]);
+        setShowSummary(true);
     };
 
     const handleRemoveFromCart = (index) => {
@@ -81,12 +83,10 @@ function Roundneck() {
                             ))}
                         </div>
                     </div>
-
                     {/* Product details section */}
                     <div className='ml-6'>
                         <div className='pname dark:text-white text-black text-xl font-bold'>{selectedItem.title}</div>
                         <div className='dark:text-gray-300 text-gray-600 mb-2'>Color: {selectedItem.colour}</div>
-                            {/* Colour Selection */}
                         <form className='flex flex-col mb-4'>
                             <label htmlFor="colours" className='dark:text-gray-300 text-gray-600'>Select a different colour</label>
                             <select name="colours" id="colours" onChange={handleColorChange} className='p-2 border rounded mb-4'>
@@ -95,7 +95,6 @@ function Roundneck() {
                                 ))}
                             </select>
                         </form>
-                            {/* brand selection */}
                         <form className='flex flex-col mb-4'>
                             <label htmlFor="brands" className='dark:text-gray-300 text-gray-600'>Select from our range of brands</label>
                             <select name="brands" id="brands" onChange={handleBrandChange} className='p-2 border rounded mb-4'>
@@ -104,7 +103,6 @@ function Roundneck() {
                                 ))}
                             </select>
                         </form>
-                            {/* size selection  and quantity*/}
                         <form className='flex flex-col mb-4'>
                             <label htmlFor="sizes" className='dark:text-gray-300 text-gray-600'>Select Size</label>
                             <select name="sizes" id="sizes" onChange={handleSizeChange} className='p-2 border rounded mb-4'>
@@ -124,11 +122,9 @@ function Roundneck() {
                                 className='p-2 border rounded w-16'
                             />
                         </div>
-                                {/* Price section */}
                         <div className='mb-4'>
                             <p className="dark:text-gray-300 text-gray-600">Price: ₦{getPrice()}</p>
                         </div>
-                                {/* Cart section */}
                         <button
                             onClick={handleAddToCart}
                             className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition"
@@ -143,7 +139,20 @@ function Roundneck() {
                     </div>
                 </div>
             </div>
-            <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+            {showSummary && (
+                <div className="order-summary dark:bg-gray-900 bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto mt-10">
+                    <h2 className="text-xl font-bold dark:text-white text-black">Order Summary</h2>
+                    <ul>
+                        {cartItems.map((item, index) => (
+                            <li key={index} className="flex justify-between dark:text-gray-300 text-gray-600 mb-2">
+                                <span>{item.title} - {item.brand} - {item.size}</span>
+                                <span>₦{item.price} x {item.quantity}</span>
+                                <button onClick={() => handleRemoveFromCart(index)} className="text-red-500">Remove</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </>
     );
 }
