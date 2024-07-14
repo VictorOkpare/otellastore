@@ -1,6 +1,8 @@
-{
-    "pocket": 1000,
-    "front": 2000,
-    "front-back": 3000
+[
+  {
+    "pocketPrice": 1000,
+    "frontOnlyPrice": 2000,
+    "frontAndBackPrice": 3000
   }
+]
   

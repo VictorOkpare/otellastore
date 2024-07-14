@@ -64,7 +64,20 @@ const CustomizationPage = () => {
 
     let basePrice = isPremadeDesign ? pricing.frontOnlyPrice : pricing[designType];
     const brandPrice = brandOptions.find(brand => brand.brandname === selectedBrand)?.price || 0;
-    const total = (basePrice + brandPrice) * selectedQuantity;
+    const quantity = Number(selectedQuantity);
+
+    // Logging for debugging
+    console.log('Base Price:', basePrice);
+    console.log('Brand Price:', brandPrice);
+    console.log('Quantity:', quantity);
+
+    if (isNaN(basePrice) || isNaN(brandPrice) || isNaN(quantity)) {
+      console.error('Invalid price calculation due to NaN values.');
+      setTotalPrice(0);
+      return;
+    }
+
+    const total = (basePrice + brandPrice) * quantity;
     setTotalPrice(total);
   };
 
@@ -236,7 +249,7 @@ const CustomizationPage = () => {
               <select
                 className="p-2 border rounded"
                 value={selectedBrand}
-                onChange={(e) => setSelectedBrand(e.target.value)}
+                onChange ={(e) => setSelectedBrand(e.target.value)}
               >
                 <option value="">Select Brand</option>
                 {brandOptions.map(brand => (
