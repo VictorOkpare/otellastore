@@ -1,0 +1,447 @@
+[
+    {
+        "id": "1",
+        "img": "src/assets/images/roundneckImg/Black_roundneck.jpg",
+        "colour": "Black",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "img": "src/assets/images/roundneckImg/pink_roundneck.jpg",
+        "colour": "Pink",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "img": "src/assets/images/roundneckImg/Red_roundneck.jpg",
+        "colour": "Red",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "img": "src/assets/images/roundneckImg/Navy_roundneck.jpg",
+        "colour": "Navy",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "img": "src/assets/images/roundneckImg/orange_roundneck.jpg",
+        "colour": "Orange",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "img": "src/assets/images/roundneckImg/green_roundneck.jpg",
+        "colour": "Green",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    }
+  ]
+  

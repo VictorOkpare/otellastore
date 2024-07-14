@@ -1,0 +1,18 @@
+[
+    {
+      "id": "design1",
+      "title": "Cool Design 1",
+      "image": "path/to/design1.jpg"
+    },
+    {
+      "id": "design2",
+      "title": "Cool Design 2",
+      "image": "path/to/design2.jpg"
+    },
+    {
+      "id": "design3",
+      "title": "Cool Design 3",
+      "image": "path/to/design3.jpg"
+    }
+  ]
+  
