@@ -48,12 +48,12 @@ const Navbar = ({ handleOrderPopup }) => {
             </div>
 
             {/* Logo */}
-            <div>
+            <div className=''>
               <Link
                 to='#'
-                className='font-extrabold w-10 flex gap-2 text-black font-robotoCondensed text-lg dark:text-white'
+                className=' font-extrabold w-10 flex gap-2 text-black font-robotoCondensed text-lg dark:text-white'
               >
-                <span className='bg-orange-500 p-2 text-white rounded-full font-nunito'>
+                <span className='max-sm:text-[12px]  bg-orange-500 p-1 text-white rounded-full font-nunito'>
                   Otella<span className='text-orange-500 px-1 bg-white rounded-full'>store</span>
                 </span>
               </Link>

@@ -27,6 +27,7 @@ const CustomizationPage = () => {
   const [uploadedDesign, setUploadedDesign] = useState(null);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
   const [isOrderSummaryClicked, setIsOrderSummaryClicked] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const { addToCart } = useCart();
 
   useEffect(() => {
@@ -105,7 +106,8 @@ const CustomizationPage = () => {
       img: uploadedDesign ? URL.createObjectURL(uploadedDesign) : '', // Add image URL if available
     };
     addToCart(newItem);
-    alert('Item added to cart!');
+    setSuccessMessage('Item added to cart successfully!');
+    setTimeout(() => setSuccessMessage(''), 3000); // Hide success message after 3 seconds
   };
 
   const handleOrderSummary = () => {
@@ -130,7 +132,7 @@ const CustomizationPage = () => {
   };
 
   return (
-    <div className="dark:bg-gray-900 p-4 bg-white text-black dark:text-white">
+    <div className=" overflow-x-hidden dark:bg-gray-900 p-4 bg-white text-black dark:text-white">
       <nav className="p-4 mb-4 bg-orange-500 text-white dark:text-white">
         <h1 className="text-2xl text-white font-nunito text-center">T-Shirt Customization</h1>
       </nav>
@@ -243,9 +245,9 @@ const CustomizationPage = () => {
           </div>
 
           <button
-            className={`order-summary-button p-2 rounded mt-2 ${isFormComplete() ? "bg-orange-500 text-white" : "bg-gray-300 text-gray-600 cursor-not-allowed"}`}
+            className={`order-summary-button p-2 rounded mt-2 ${isFormComplete() ? "bg-orange-500 hover:font-extrabold text-white" : "bg-gray-300 text-gray-600 cursor-not-allowed"}`}
             onClick={isFormComplete() ? handleOrderSummary : null}
-            data-aos="fade-up"
+            
             disabled={!isFormComplete()} // Disable button until all fields are filled
           >
             Order Summary
@@ -265,13 +267,20 @@ const CustomizationPage = () => {
           )}
 
           {isOrderSummaryClicked && (
-            <button
-              className="add-to-cart-button p-2 bg-green-500 text-white rounded mt-2"
-              onClick={handleAddToCart}
-              data-aos="fade-up"
-            >
-              Add to Cart
-            </button>
+            <div>
+              <button
+                className="add-to-cart-button p-2 bg-green-500 text-white hover:font-extrabold rounded mt-2"
+                onClick={handleAddToCart}
+                
+              >
+                Add to Cart
+              </button>
+              {successMessage && (
+                <div className="success-message p-2 bg-green-100 text-green-700 rounded mt-2 ">
+                  {successMessage}
+                </div>
+              )}
+            </div>
           )}
         </div>
       )}
