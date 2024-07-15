@@ -40,3 +40,5 @@
   .mobile-menu a {
     @apply inline-block px-2 hover:font-extrabold duration-1000;
   }
+
+

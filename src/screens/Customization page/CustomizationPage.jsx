@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import roundneck from '../ProductScreen/Roundneck.json';
 import collarneck from "../ProductScreen/collarneck.json";
 import vnecks from "../ProductScreen/vneck.json";
 import kidsTshirt from "../ProductScreen/kidsTshirt.json";
 import categories from "./categories.json";
-import premadeDesigns from "./premade.json";
 import pricing from "./pricing.json";
+import { useCart } from '../../components/CartContext';
+import './CustomizationPage.css'; 
 
 const CustomizationPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -18,9 +24,14 @@ const CustomizationPage = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [designType, setDesignType] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
-  const [isPremadeDesign, setIsPremadeDesign] = useState(false);
-  const [selectedPremadeDesign, setSelectedPremadeDesign] = useState('');
   const [uploadedDesign, setUploadedDesign] = useState(null);
+  const [showOrderSummary, setShowOrderSummary] = useState(false);
+  const [isOrderSummaryClicked, setIsOrderSummaryClicked] = useState(false);
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   useEffect(() => {
     switch (selectedCategory) {
@@ -60,16 +71,11 @@ const CustomizationPage = () => {
   }, [selectedBrand, brandOptions]);
 
   const calculateTotalPrice = () => {
-    if (!selectedBrand) return;
+    if (!selectedBrand || !designType) return;
 
-    let basePrice = isPremadeDesign ? pricing.frontOnlyPrice : pricing[designType];
+    const basePrice = pricing[0][designType] || 0;
     const brandPrice = brandOptions.find(brand => brand.brandname === selectedBrand)?.price || 0;
     const quantity = Number(selectedQuantity);
-
-    // Logging for debugging
-    console.log('Base Price:', basePrice);
-    console.log('Brand Price:', brandPrice);
-    console.log('Quantity:', quantity);
 
     if (isNaN(basePrice) || isNaN(brandPrice) || isNaN(quantity)) {
       console.error('Invalid price calculation due to NaN values.');
@@ -84,25 +90,60 @@ const CustomizationPage = () => {
   const handleDesignUpload = (event) => {
     const file = event.target.files[0];
     setUploadedDesign(file);
-    setIsPremadeDesign(false);
-    setDesignType('');
+    setDesignType(''); // Reset design type on new upload
   };
 
-  const handlePlaceOrder = () => {
-    // Handle the order placement logic here
-    alert("Order placed successfully!");
+  const handleAddToCart = () => {
+    const newItem = {
+      category: selectedCategory,
+      colour: selectedColor,
+      brand: selectedBrand,
+      size: selectedSize,
+      quantity: selectedQuantity,
+      designType: designType,
+      price: totalPrice,
+      img: uploadedDesign ? URL.createObjectURL(uploadedDesign) : '', // Add image URL if available
+    };
+    addToCart(newItem);
+    alert('Item added to cart!');
+  };
+
+  const handleOrderSummary = () => {
+    calculateTotalPrice();
+    setShowOrderSummary(true);
+    setIsOrderSummaryClicked(true);
+  };
+
+  const isFormComplete = () => {
+    return selectedCategory && selectedColor && selectedBrand && selectedSize && uploadedDesign && designType;
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    cssEase: "linear"
   };
 
   return (
-    <div className="customization-page p-4">
+    <div className="dark:bg-gray-900 p-4 bg-white text-black dark:text-white">
+      <nav className="p-4 mb-4 bg-orange-500 text-white dark:text-white">
+        <h1 className="text-2xl text-white font-nunito text-center">T-Shirt Customization</h1>
+      </nav>
+
       <div className="categories mb-4">
-        <h2 className="text-2xl mb-2">Select Category</h2>
+        <h2 className="text-2xl mb-2 dark:text-white">Select Category</h2>
         <div className="grid grid-cols-2 gap-4">
           {categories.map(category => (
             <button
               key={category}
-              className="p-2 bg-gray-200 rounded hover:bg-gray-300"
+              className="p-2 bg-orange-50 rounded dark:bg-orange-500 text-black dark:text-white hover:bg-orange-500 hover:text-white hover:font-bold transition duration-300"
               onClick={() => setSelectedCategory(category)}
+              data-aos="fade-up"
             >
               {category}
             </button>
@@ -111,17 +152,17 @@ const CustomizationPage = () => {
       </div>
 
       {selectedCategory && (
-        <div className="customization-options mb-4">
+        <div className="mb-4">
           <h2 className="text-2xl mb-2">Customize Your {selectedCategory}</h2>
 
-          <div className="color-selection mb-2">
-            <h3 className="text-xl">Select Color</h3>
+          <div className="mb-2" data-aos="fade-up">
+            <h3 className="text-md">Select Color</h3>
             <select
-              className="p-2 border rounded"
+              className="p-2 border rounded w-full text-black"
               value={selectedColor}
               onChange={(e) => setSelectedColor(e.target.value)}
             >
-              <option value="">Select Color</option>
+              <option value="" className='text-black'>Select Color</option>
               {categoryData.map(item => (
                 <option key={item.colour} value={item.colour}>
                   {item.colour}
@@ -131,17 +172,17 @@ const CustomizationPage = () => {
           </div>
 
           {selectedColor && (
-            <div className="brand-selection mb-2">
-              <h3 className="text-xl">Select Brand</h3>
+            <div className="mb-2" data-aos="fade-up">
+              <h3 className="text-md text-white">Select Brand</h3>
               <select
-                className="p-2 border rounded"
+                className="p-2 border rounded w-full text-black"
                 value={selectedBrand}
                 onChange={(e) => setSelectedBrand(e.target.value)}
               >
                 <option value="">Select Brand</option>
                 {brandOptions.map(brand => (
                   <option key={brand.brandname} value={brand.brandname}>
-                    {brand.brandname}
+                    {brand.brandname} ({brand.price} Naira)
                   </option>
                 ))}
               </select>
@@ -149,10 +190,10 @@ const CustomizationPage = () => {
           )}
 
           {selectedBrand && (
-            <div className="size-selection mb-2">
-              <h3 className="text-xl">Select Size</h3>
+            <div className="size-selection mb-2" data-aos="fade-up">
+              <h3 className="text-md">Select Size</h3>
               <select
-                className="p-2 border rounded"
+                className="p-2 border rounded w-full text-black"
                 value={selectedSize}
                 onChange={(e) => setSelectedSize(e.target.value)}
               >
@@ -166,24 +207,33 @@ const CustomizationPage = () => {
             </div>
           )}
 
-          <div className="quantity-selection mb-2">
-            <h3 className="text-xl">Select Quantity</h3>
+          <div className="quantity-selection mb-2" data-aos="fade-up">
+            <h3 className="text-md">Select Quantity</h3>
             <input
               type="number"
-              className="p-2 border rounded w-full"
+              className="p-2 border rounded w-full text-black"
               value={selectedQuantity}
               onChange={(e) => setSelectedQuantity(Number(e.target.value))}
               min="1"
             />
           </div>
 
-          <div className="design-type-selection mb-2">
+          <div className="upload-design mb-2" data-aos="fade-up">
+            <h3 className="text-xl">Upload Your Design</h3>
+            <input
+              type="file"
+              className="p-2 border rounded w-full"
+              onChange={handleDesignUpload}
+            />
+          </div>
+
+          <div className="design-type-selection mb-2" data-aos="fade-up">
             <h3 className="text-xl">Select Design Type</h3>
             <select
-              className="p-2 border rounded"
+              className="p-2 border rounded w-full"
               value={designType}
               onChange={(e) => setDesignType(e.target.value)}
-              disabled={isPremadeDesign || uploadedDesign}
+              disabled={!uploadedDesign} // Allow selection only if a design is uploaded
             >
               <option value="">Select Design Type</option>
               <option value="pocketPrice">Pocket Design</option>
@@ -192,140 +242,57 @@ const CustomizationPage = () => {
             </select>
           </div>
 
-          <div className="upload-design mb-2">
-            <h3 className="text-xl">Upload Your Design</h3>
-            <input
-              type="file"
-              className="p-2 border rounded w-full"
-              onChange={handleDesignUpload}
-              disabled={isPremadeDesign}
-            />
-          </div>
-
           <button
-            className="calculate-cost-button p-2 bg-blue-500 text-white rounded mt-2"
-            onClick={calculateTotalPrice}
+            className={`order-summary-button p-2 rounded mt-2 ${isFormComplete() ? "bg-orange-500 text-white" : "bg-gray-300 text-gray-600 cursor-not-allowed"}`}
+            onClick={isFormComplete() ? handleOrderSummary : null}
+            data-aos="fade-up"
+            disabled={!isFormComplete()} // Disable button until all fields are filled
           >
-            Calculate Cost
+            Order Summary
           </button>
 
-          <div className="total-price mt-4">
-            <h2 className="text-2xl">Total Price: {totalPrice} Naira</h2>
-          </div>
+          {showOrderSummary && (
+            <div className="total-price mt-4" data-aos="fade-up">
+              <h2 className="text-2xl">Order Summary:</h2>
+              <p>Brand: {selectedBrand} ({brandOptions.find(brand => brand.brandname === selectedBrand)?.price} Naira)</p>
+              <p>Color: {selectedColor}</p>
+              <p>Size: {selectedSize}</p>
+              <p>Design Type: {designType}</p>
+              <p>Base Price: {pricing[0][designType] || 0} Naira</p>
+              <p>Quantity: {selectedQuantity}</p>
+              <p>Total Price: {totalPrice} Naira</p>
+            </div>
+          )}
 
-          <button
-            className="place-order-button p-2 bg-green-500 text-white rounded mt-2"
-            onClick={handlePlaceOrder}
-          >
-            Place Order
-          </button>
+          {isOrderSummaryClicked && (
+            <button
+              className="add-to-cart-button p-2 bg-green-500 text-white rounded mt-2"
+              onClick={handleAddToCart}
+              data-aos="fade-up"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       )}
 
-      <div className="premade-designs mb-4">
-        <h2 className="text-2xl mb-2">Select Premade Design</h2>
-        <div className="grid grid-cols-3 gap-4">
-          {premadeDesigns.map(design => (
-            <div
-              key={design.id}
-              className="p-2 border rounded hover:bg-gray-200"
-              onClick={() => {
-                setIsPremadeDesign(true);
-                setSelectedPremadeDesign(design.id);
-                setDesignType('frontOnlyPrice');
-                setUploadedDesign(null);
-              }}
-            >
-              <img src={design.image} alt={design.title} className="w-full h-32 object-cover mb-2" />
-              <p className="text-center">{design.title}</p>
+      <div className="premade-designs mt-8" data-aos="fade-up">
+        <h2 className="text-2xl mb-4">Premade Designs</h2>
+        <button
+          className="p-2 bg-orange-500 text-white rounded mt-2 mb-4"
+          onClick={() => alert('Premade designs will be displayed!')}
+          data-aos="fade-up"
+        >
+          Click here to get premade designs
+        </button>
+        <Slider {...sliderSettings}>
+          {categoryData.map(item => (
+            <div key={item.title} className="p-2">
+              <img src={item.image} alt={item.title} className="rounded-lg shadow-lg" />
+              <h3 className="text-center mt-2">{item.title}</h3>
             </div>
           ))}
-        </div>
-
-        {isPremadeDesign && (
-          <div className="premade-design-options mb-4">
-            <div className="brand-selection mb-2">
-              <h3 className="text-xl">Select Brand</h3>
-              <select
-                className="p-2 border rounded"
-                value={selectedBrand}
-                onChange ={(e) => setSelectedBrand(e.target.value)}
-              >
-                <option value="">Select Brand</option>
-                {brandOptions.map(brand => (
-                  <option key={brand.brandname} value={brand.brandname}>
-                    {brand.brandname}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {selectedBrand && (
-              <>
-                <div className="color-selection mb-2">
-                  <h3 className="text-xl">Select Color</h3>
-                  <select
-                    className="p-2 border rounded"
-                    value={selectedColor}
-                    onChange={(e) => setSelectedColor(e.target.value)}
-                  >
-                    <option value="">Select Color</option>
-                    {categoryData.map(item => (
-                      <option key={item.colour} value={item.colour}>
-                        {item.colour}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="size-selection mb-2">
-                  <h3 className="text-xl">Select Size</h3>
-                  <select
-                    className="p-2 border rounded"
-                    value={selectedSize}
-                    onChange={(e) => setSelectedSize(e.target.value)}
-                  >
-                    <option value="">Select Size</option>
-                    {sizeOptions.map(size => (
-                      <option key={size.sizename} value={size.sizename}>
-                        {size.sizename}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="quantity-selection mb-2">
-                  <h3 className="text-xl">Select Quantity</h3>
-                  <input
-                    type="number"
-                    className="p-2 border rounded w-full"
-                    value={selectedQuantity}
-                    onChange={(e) => setSelectedQuantity(Number(e.target.value))}
-                    min="1"
-                  />
-                </div>
-
-                <button
-                  className="calculate-cost-button p-2 bg-blue-500 text-white rounded mt-2"
-                  onClick={calculateTotalPrice}
-                >
-                  Calculate Cost
-                </button>
-
-                <div className="total-price mt-4">
-                  <h2 className="text-2xl">Total Price: {totalPrice} Naira</h2>
-                </div>
-
-                <button
-                  className="place-order-button p-2 bg-orange-500 text-white rounded mt-2"
-                  onClick={handlePlaceOrder}
-                >
-                  Add to Cart
-                </button>
-              </>
-            )}
-          </div>
-        )}
+        </Slider>
       </div>
     </div>
   );

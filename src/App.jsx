@@ -10,6 +10,7 @@ import { CartProvider } from './components/CartContext.jsx';
 import CartPage from './screens/CartScreen/CartPage.jsx';
 import CustomizationPage from './screens/Customization page/CustomizationPage.jsx';
 
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AOS from 'aos';
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/Roundneck" element={<Roundneck />} />
               <Route path="/Cart" element={<CartPage />} />
               <Route path="/Customization" element={<CustomizationPage />} />
+
             </Routes>
           </main>
           <Footer />

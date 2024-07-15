@@ -2,29 +2,30 @@ import React from 'react';
 
 const OrderSummary = ({ cartItems, onRemoveFromCart }) => {
   return (
-    <div className="order-summary">
-      {cartItems.length === 0 ? (
-        <p>No items in cart.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index} className="flex items-center mb-4">
-              <img src={item.img} alt={item.title} className="w-16 h-16 mr-4" />
-              <div className="flex-grow">
-                <h4 className="font-bold">{item.title}</h4>
-                <p>₦{item.price}</p>
-                <p>Quantity: {item.quantity}</p>
-                <button
-                  onClick={() => onRemoveFromCart(index)}
-                  className="text-red-500 hover:underline mt-2"
-                >
-                  Remove
-                </button>
+    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold dark:text-white text-black mb-6">Order Summary</h2>
+      <div className="space-y-4">
+        {cartItems.map((item, index) => (
+          <div key={index} className="flex items-center justify-between bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md">
+            <div className="flex items-center">
+              <img src={item.img} alt="" className="w-16 h-16 object-cover rounded-lg mr-4" />
+              <div>
+                <p className="font-bold dark:text-white text-black">{`${item.colour} ${item.title  || item.category}`}</p>
+                <p className="dark:text-gray-300 text-gray-600">Brand: {item.brand}</p>
+                <p className="dark:text-gray-300 text-gray-600">Size: {item.size}</p>
+                <p className="dark:text-gray-300 text-gray-600">Quantity: {item.quantity} pcs</p>
+                <p className="dark:text-gray-300 text-gray-600">Total Price: &#8358;{item.price}</p>
               </div>
-            </li>
-          ))}
-        </ul>
-      )}
+            </div>
+            <button
+              onClick={() => onRemoveFromCart(index)}
+              className="text-red-500 dark:text-red-400 hover:underline"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

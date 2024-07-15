@@ -146,6 +146,79 @@
               ]
           }
       ]
+  },{
+      "id": "3",
+      "img": "src/assets/images/roundneckImg/pink_roundneck.jpg",
+      "colour": "Pink",
+      "title": "Men's Roundneck Tshirt",
+      "brand": [
+          {
+              "brandname": "Kanin",
+              "price": 3000,
+              "size": [
+                  {
+                      "sizename": "s",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "m",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "l",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "xl",
+                      "quantity": 100
+                  }
+              ]
+          },
+          {
+              "brandname": "SMT",
+              "price": 4000,
+              "size": [
+                  {
+                      "sizename": "s",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "m",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "l",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "xl",
+                      "quantity": 100
+                  }
+              ]
+          },
+          {
+              "brandname": "Goldstar",
+              "price": 2500,
+              "size": [
+                  {
+                      "sizename": "s",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "m",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "l",
+                      "quantity": 100
+                  },
+                  {
+                      "sizename": "xl",
+                      "quantity": 100
+                  }
+              ]
+          }
+      ]
   },
   {
       "id": "4",

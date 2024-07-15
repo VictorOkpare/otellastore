@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Imagedata from './Roundneck.json';
 import OrderSummary from '../../components/OrderSummary';
 import { useCart } from '../../components/CartContext';
 
 function Roundneck() {
-  const { addToCart } = useCart();
+  const { addToCart, cartItems, removeFromCart } = useCart();
   const [selectedItem, setSelectedItem] = useState(Imagedata[0]);
   const [selectedBrand, setSelectedBrand] = useState(selectedItem.brand[0].brandname);
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [cartItems, setCartItems] = useState([]);
+  const [price, setPrice] = useState(selectedItem.brand[0].price);
+  const [showOrderSummary, setShowOrderSummary] = useState(false);
+
+  useEffect(() => {
+    const brand = selectedItem.brand.find(b => b.brandname === selectedBrand);
+    if (brand) {
+      setPrice(brand.price);
+    }
+  }, [selectedBrand, selectedItem]);
 
   const handleImageClick = (item) => {
     setSelectedItem(item);
@@ -43,16 +51,10 @@ function Roundneck() {
       brand: selectedBrand,
       size: selectedSize,
       quantity: parseInt(quantity),
-      price: 1999, // Assuming a fixed price for simplicity
+      price: price,
     };
-    setCartItems([...cartItems, item]);
     addToCart(item);
-  };
-
-  const handleRemoveFromCart = (index) => {
-    const newCartItems = [...cartItems];
-    newCartItems.splice(index, 1);
-    setCartItems(newCartItems);
+    setShowOrderSummary(true);
   };
 
   return (
@@ -78,8 +80,9 @@ function Roundneck() {
           </div>
           {/* Product details section */}
           <div className='ml-6'>
-            <div className='pname dark:text-white text-black text-xl font-bold'>{selectedItem.title}</div>
+            <div className='pname dark:text-white text-black text-xl font-bold'>{`${selectedItem.colour} ${selectedItem.title}`}</div>
             <div className='dark:text-gray-300 text-gray-600 mb-2'>Color: {selectedItem.colour}</div>
+            <div className='dark:text-gray-300 text-gray-600 mb-2'>Price: &#8358;{price}</div>
             <form className='flex flex-col mb-4'>
               <label htmlFor="colours" className='dark:text-gray-300 text-gray-600'>Select a different colour</label>
               <select name="colours" id="colours" onChange={handleColorChange} className='p-2 border rounded mb-4'>
@@ -123,8 +126,7 @@ function Roundneck() {
             </button>
           </div>
         </div>
-        {/* Order Summary */}
-        <OrderSummary cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+        {showOrderSummary && <OrderSummary cartItems={cartItems} onRemoveFromCart={removeFromCart} />}
       </div>
     </>
   );
