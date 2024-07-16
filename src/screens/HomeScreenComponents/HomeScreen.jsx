@@ -47,11 +47,11 @@ function HomeScreen() {
     <>
     <div className='relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-white flex justify-center items-center dark:bg-black dark:text-white duration-200'>
       {/* background pattern */}
-     <div className="h-[600px] w-[300px] max-sm:h-[400px] max-sm:w-[700px] bg-orange-500 dark:bg-orange-500 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
+     <div className="h-[600px] w-[300px] max-sm:h-[700px] max-sm:w-[1000px] bg-orange-400 dark:bg-orange-500 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-9 ">
 
      </div >
       {/* hero section */}
-      <div className='container pb-8 sm:pb-0'  data-aos='zoom-out'
+      <div className='container sm:pb-0'  data-aos='zoom-out'
               data-aos-duration = '500'
               data-aos-once='true' >
         <Slider {...settings}>

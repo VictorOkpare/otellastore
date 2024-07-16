@@ -12,7 +12,11 @@ module.exports = {
         robotoCondensed: ["Roboto Condensed", "sans-serif"],
         lobster: ["Lobster", "sans-serif"],
         margarine:["Margarine", "sans-serif"],
-        nunito:["Nunito Sans", "sans-serif"]      },
+        nunito:["Nunito Sans", "sans-serif"]      }
+        ,backgroundImage:{
+          'light-pattern': "url('/path-to-your-light-patterm.svg')",
+          'dark-pattern': "url('/path-to-your-dark-pattern.svg')"
+        },
       screens: {
         'max-sm': {'max': '1024px'}
       },

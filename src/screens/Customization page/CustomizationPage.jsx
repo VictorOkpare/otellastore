@@ -10,8 +10,9 @@ import vnecks from "../ProductScreen/vneck.json";
 import kidsTshirt from "../ProductScreen/kidsTshirt.json";
 import categories from "./categories.json";
 import pricing from "./pricing.json";
+import premadeDesigns from "../PremadeDesign/premadeDesign.json";
 import { useCart } from '../../components/CartContext';
-import './CustomizationPage.css'; 
+import PremadeDesign from '../PremadeDesign/PremadeDesign.jsx';
 
 const CustomizationPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -132,7 +133,7 @@ const CustomizationPage = () => {
   };
 
   return (
-    <div className=" overflow-x-hidden dark:bg-gray-900 p-4 bg-white text-black dark:text-white">
+    <div className="overflow-x-hidden dark:bg-gray-900 p-4 bg-white text-black dark:text-white">
       <nav className="p-4 mb-4 bg-orange-500 text-white dark:text-white">
         <h1 className="text-2xl text-white font-nunito text-center">T-Shirt Customization</h1>
       </nav>
@@ -286,22 +287,7 @@ const CustomizationPage = () => {
       )}
 
       <div className="premade-designs mt-8" data-aos="fade-up">
-        <h2 className="text-2xl mb-4">Premade Designs</h2>
-        <button
-          className="p-2 bg-orange-500 text-white rounded mt-2 mb-4"
-          onClick={() => alert('Premade designs will be displayed!')}
-          data-aos="fade-up"
-        >
-          Click here to get premade designs
-        </button>
-        <Slider {...sliderSettings}>
-          {categoryData.map(item => (
-            <div key={item.title} className="p-2">
-              <img src={item.image} alt={item.title} className="rounded-lg shadow-lg" />
-              <h3 className="text-center mt-2">{item.title}</h3>
-            </div>
-          ))}
-        </Slider>
+        <PremadeDesign designs={premadeDesigns} sliderSettings={sliderSettings} />
       </div>
     </div>
   );

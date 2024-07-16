@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "img": "src/assets/images/topDesignScreenImages/design1.png",
+        "description": "Get this exclusive design available in different sizes",
+        "designName": "Summer Sound",
+        "designPrice": 8000,
+        "size": ["s", "m", "l", "xl"],
+        "cta": "Get This Design",
+        "colour":  " "
+           
+    },
+    {
+        "id": 2,
+        "img": "src/assets/images/topDesignScreenImages/design2.png",
+        "description": "Get this exclusive design available in different sizes",
+        "designName": "Black is Beautiful",
+        "designPrice": 8000,
+        "size": ["s", "m", "l", "xl"],
+        "cta": "Get This Design",
+        "colour":  " "
+           
+    },
+    {
+        "id": 3,
+        "img": "src/assets/images/topDesignScreenImages/design3.png",
+        "description": "Get this exclusive design available in different sizes",
+        "designName": "Red Bull",
+        "designPrice": 14000,
+        "size": ["s", "m", "l", "xl"],
+        "cta": "Get This Design",
+        "colour":  " "
+           
+    },
+    {
+        "id": 4,
+        "img": "src/assets/images/topDesignScreenImages/design6.png",
+        "description": "Get this exclusive design. Available in different sizes",
+        "designName": "Sagittarius",
+        "designPrice": 10000,
+        "size": ["s", "m", "l", "xl"],
+        "cta": "Get This Design",
+        "colour":  " "
+           
+    },
+    {
+        "id": 5,
+        "img": "src/assets/images/topDesignScreenImages/design8.png",
+        "description": "Get this exclusive design. Available in different sizes",
+        "designName": "No Weapon",
+        "designPrice": 8000,
+        "size": ["s", "m", "l", "xl"],
+        "cta": "Get This Design",
+        "colour":  " "
+           
+    }
+
+      
+]

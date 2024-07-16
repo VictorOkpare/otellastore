@@ -16,12 +16,12 @@ const OrderSummary = ({ cartItems, onRemoveFromCart }) => {
             <div className="flex items-center max-sm:flex-col">
               <img src={item.img} alt="" className="w-16 h-16 object-cover rounded-lg mr-4" />
               <div>
-                <p className="font-bold dark:text-white text-black">{`${item.colour} ${item.title || item.category}`}</p>
-                <p className="dark:text-gray-300 text-gray-600">Brand: {item.brand}</p>
+                <p className="font-bold dark:text-white text-black">{`${item.colour || "Premade Design - "} ${item.title || item.category || item.designName}`}</p>
+                <p className="dark:text-gray-300 text-gray-600">Brand: {item.brand || "Otella"}</p>
                 <p className="dark:text-gray-300 text-gray-600">Size: {item.size}</p>
                 <p className="dark:text-gray-300 text-gray-600">Quantity: {item.quantity} pcs</p>
-                <p className="dark:text-gray-300 text-gray-600">Design Type: {designTypeDescriptions[item.designType]}</p>
-                <p className="dark:text-gray-300 text-gray-600">Total Price: &#8358;{item.price}</p>
+                <p className="dark:text-gray-300 text-gray-600">Design Type: {designTypeDescriptions[item.designType  ] || "Pre-made designs"}</p>
+                <p className="dark:text-gray-300 text-gray-600">Price: &#8358;{item.price }</p>
               </div>
             </div>
             <button

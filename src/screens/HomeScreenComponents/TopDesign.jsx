@@ -1,8 +1,8 @@
 import React from 'react'
 import Img1 from '../../assets/images/topDesignScreenImages/design1.jpg'
-import Img2 from '../../assets/images/topDesignScreenImages/design2.jpg'
-import Img3 from '../../assets/images/topDesignScreenImages/design3.jpg'
-import Img4 from '../../assets/images/topDesignScreenImages/design8.jpg'
+import Img2 from '../../assets/images/topDesignScreenImages/design1.png'
+import Img3 from '../../assets/images/topDesignScreenImages/design2.png'
+import Img4 from '../../assets/images/topDesignScreenImages/design3.png'
 import Img5 from '../../assets/images/topDesignScreenImages/design6.jpg'
 import Img6 from '../../assets/images/topDesignScreenImages/design7.jpg'
 
@@ -65,7 +65,7 @@ function TopDesign() {
                 {/* image section */}
                 <div className='h-[100px]'>
                   <img src={data.img} alt=""
-                  className='max-w-[140px] block mx-auto transform -translate-y-20 group-hover:scale-105 duration-300 drop-shadow-md'
+                  className='max-w-[180px] block mx-auto transform -translate-y-20 group-hover:scale-105 duration-300 drop-shadow-md'
                   />
                 </div>
                 {/* details section */}
