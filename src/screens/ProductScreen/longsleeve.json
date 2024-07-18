@@ -1,12 +1,12 @@
 [
     {
         "id": "1",
-        "img": "src/assets/images/collarneckImg/Black_collarneck.jpg",
+        "img": "src/assets/images/roundneckImg/Black_roundneck.jpg",
         "colour": "Black",
-        "title": "Adult Collarneck Tshirt",
+        "title": "Men's Roundneck Tshirt",
         "brand": [
             {
-                "brandname": "Mr Tan",
+                "brandname": "Kanin",
                 "price": 3000,
                 "size": [
                     {
@@ -28,8 +28,8 @@
                 ]
             },
             {
-                "brandname": "Air Pilot",
-                "price": 8000,
+                "brandname": "SMT",
+                "price": 4000,
                 "size": [
                     {
                         "sizename": "s",
@@ -50,82 +50,8 @@
                 ]
             },
             {
-                "brandname": "New Line",
-                "price": 5500,
-                "size": [
-                    {
-                        "sizename": "s",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "m",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "l",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "xl",
-                        "quantity": 100
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "2",
-        "img": "src/assets/images/collarneckImg/Red_collarneck.jpg",
-        "colour": "Red",
-        "title": "Adult Collarneck Tshirt",
-        "brand": [
-            {
-                "brandname": "Mr Tan",
-                "price": 3000,
-                "size": [
-                    {
-                        "sizename": "s",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "m",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "l",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "xl",
-                        "quantity": 100
-                    }
-                ]
-            },
-            {
-                "brandname": "Air Pilot",
-                "price": 8000,
-                "size": [
-                    {
-                        "sizename": "s",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "m",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "l",
-                        "quantity": 100
-                    },
-                    {
-                        "sizename": "xl",
-                        "quantity": 100
-                    }
-                ]
-            },
-            {
-                "brandname": "New Line",
-                "price": 5500,
+                "brandname": "Goldstar",
+                "price": 2500,
                 "size": [
                     {
                         "sizename": "s",
@@ -149,12 +75,12 @@
     },
     {
         "id": "3",
-        "img": "src/assets/images/collarneckImg/Ash_collarneck.jpg",
-        "colour": "Ash",
-        "title": "Adult Collarneck Tshirt",
+        "img": "src/assets/images/roundneckImg/pink_roundneck.jpg",
+        "colour": "Pink",
+        "title": "Men's Roundneck Tshirt",
         "brand": [
             {
-                "brandname": "Mr Tan",
+                "brandname": "Kanin",
                 "price": 3000,
                 "size": [
                     {
@@ -176,8 +102,8 @@
                 ]
             },
             {
-                "brandname": "Air Pilot",
-                "price": 8000,
+                "brandname": "SMT",
+                "price": 4000,
                 "size": [
                     {
                         "sizename": "s",
@@ -198,8 +124,8 @@
                 ]
             },
             {
-                "brandname": "New Line",
-                "price": 5500,
+                "brandname": "Goldstar",
+                "price": 2500,
                 "size": [
                     {
                         "sizename": "s",
@@ -223,12 +149,12 @@
     },
     {
         "id": "4",
-        "img": "src/assets/images/collarneckImg/Green_collarneck.jpg",
-        "colour": "Green",
-        "title": "Adult Collarneck Tshirt",
+        "img": "src/assets/images/roundneckImg/Red_roundneck.jpg",
+        "colour": "Red",
+        "title": "Men's Roundneck Tshirt",
         "brand": [
             {
-                "brandname": "Mr Tan",
+                "brandname": "Kanin",
                 "price": 3000,
                 "size": [
                     {
@@ -250,8 +176,8 @@
                 ]
             },
             {
-                "brandname": "Air Pilot",
-                "price": 8000,
+                "brandname": "SMT",
+                "price": 4000,
                 "size": [
                     {
                         "sizename": "s",
@@ -272,8 +198,8 @@
                 ]
             },
             {
-                "brandname": "New Line",
-                "price": 5500,
+                "brandname": "Goldstar",
+                "price": 2500,
                 "size": [
                     {
                         "sizename": "s",
@@ -297,13 +223,13 @@
     },
     {
         "id": "5",
-        "img": "src/assets/images/collarneckImg/Yellow_collarneck.jpg",
-        "colour": "Yellow",
-        "title": "Adult Collarneck Tshirt",
+        "img": "src/assets/images/roundneckImg/Navy_roundneck.jpg",
+        "colour": "Navy",
+        "title": "Men's Roundneck Tshirt",
         "brand": [
             {
-                "brandname": "Mr Tan",
-                "price": 3500,
+                "brandname": "Kanin",
+                "price": 3000,
                 "size": [
                     {
                         "sizename": "s",
@@ -324,8 +250,8 @@
                 ]
             },
             {
-                "brandname": "Air Pilot",
-                "price": 8000,
+                "brandname": "SMT",
+                "price": 4000,
                 "size": [
                     {
                         "sizename": "s",
@@ -346,8 +272,82 @@
                 ]
             },
             {
-                "brandname": "New Line",
-                "price": 5500,
+                "brandname": "Goldstar",
+                "price": 2500,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "img": "src/assets/images/roundneckImg/orange_roundneck.jpg",
+        "colour": "Orange",
+        "title": "Men's Roundneck Tshirt",
+        "brand": [
+            {
+                "brandname": "Kanin",
+                "price": 3000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "SMT",
+                "price": 4000,
+                "size": [
+                    {
+                        "sizename": "s",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "m",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "l",
+                        "quantity": 100
+                    },
+                    {
+                        "sizename": "xl",
+                        "quantity": 100
+                    }
+                ]
+            },
+            {
+                "brandname": "Goldstar",
+                "price": 2500,
                 "size": [
                     {
                         "sizename": "s",

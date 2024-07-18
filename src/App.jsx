@@ -5,11 +5,14 @@ import Navbar from './components/Navbar';
 import HomeScreen from './screens/HomeScreenComponents/HomeScreen';
 import Contact from './screens/Contact/Contact.jsx';
 import ProductScreen from './screens/ProductScreen/ProductScreen.jsx';
+import Collarneck from './screens/ProductScreen/Collarneck.jsx';
 import Roundneck from './screens/ProductScreen/Roundneck.jsx';
+import KidsTshirt from './screens/ProductScreen/KidsTshirt.jsx';
+import Vneck from './screens/ProductScreen/Vneck.jsx';
+import Longsleeve from './screens/ProductScreen/Longsleeve.jsx';
 import { CartProvider } from './components/CartContext.jsx';
 import CartPage from './screens/CartScreen/CartPage.jsx';
 import CustomizationPage from './screens/Customization page/CustomizationPage.jsx';
-
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -48,9 +51,12 @@ const App = () => {
               <Route path="/Contact" element={<Contact />} />
               <Route path="/ProductScreen" element={<ProductScreen />} />
               <Route path="/Roundneck" element={<Roundneck />} />
+              <Route path="/Collarneck" element={<Collarneck />} />
+              <Route path="/Longsleeve" element={<Longsleeve />} />
+              <Route path="/KidsTshirt" element={<KidsTshirt />} />
+              <Route path="/Vneck" element={<Vneck />} />
               <Route path="/Cart" element={<CartPage />} />
               <Route path="/Customization" element={<CustomizationPage />} />
-
             </Routes>
           </main>
           <Footer />

@@ -16,9 +16,10 @@ const Menu = [
 
 const DropdownLinks = [
   { id: 1, name: "Roundneck Tshirts", link: "/Roundneck" },
-  { id: 2, name: "Polo Tshirts", link: "/#" },
-  { id: 3, name: "V-neck Tshirts", link: "/#" },
-  { id: 4, name: "Kids Tshirts", link: "/#" },
+  { id: 2, name: "Polo Tshirts", link: "/Collarneck" },
+  { id: 3, name: "V-neck Tshirts", link: "/Vneck" },
+  { id: 4, name: "Kids Tshirts", link: "/KidsTshirt" },
+  { id: 5, name: "Longsleeve Tshirts", link: "/Longsleeve" },
 ];
 
 const Navbar = ({ handleOrderPopup }) => {
@@ -30,7 +31,7 @@ const Navbar = ({ handleOrderPopup }) => {
   const toggleCart = () => setShowCart((prev) => !prev);
 
   return (
-    <div className=' shadow-md bg-white dark:bg-black dark:text-white duration-200 relative z-40'>
+    <div className='shadow-md bg-white dark:bg-black dark:text-white duration-200 relative z-40'>
       {/* Upper Navbar */}
       <div className='bg-white dark:bg-black py-2'>
         <div className='container flex justify-between items-center'>
@@ -48,12 +49,12 @@ const Navbar = ({ handleOrderPopup }) => {
             </div>
 
             {/* Logo */}
-            <div className=''>
+            <div>
               <Link
-                to='#'
-                className=' font-extrabold w-10 flex gap-2 text-black font-robotoCondensed text-lg dark:text-white'
+                to='/'
+                className='font-extrabold w-10 flex gap-2 text-black font-robotoCondensed text-lg dark:text-white'
               >
-                <span className='max-sm:text-[12px]  bg-orange-500 p-1 text-white rounded-full font-nunito'>
+                <span className='max-sm:text-[12px] bg-orange-500 p-1 text-white rounded-full font-nunito'>
                   Otella<span className='text-orange-500 px-1 bg-white rounded-full'>store</span>
                 </span>
               </Link>
@@ -81,7 +82,7 @@ const Navbar = ({ handleOrderPopup }) => {
 
             {/* Login button */}
             <button onClick={handleOrderPopup} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
-              <span className='group-hover:block hidden transition-all duration-200'>Sign-up</span>
+              <span className='group-hover:block hidden transition-all duration-200'>Account</span>
               <FaRegUser className='text-xl cursor-pointer drop-shadow-sm' />
             </button>
 
