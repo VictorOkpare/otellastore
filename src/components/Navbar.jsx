@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdSearch } from 'react-icons/io';
 import { GiShoppingCart } from "react-icons/gi";
@@ -6,6 +6,7 @@ import Darkmode from './Darkmode';
 import { FaRegUser, FaCaretDown, FaTimes, FaBars } from "react-icons/fa";
 import { useCart } from './CartContext';
 import OrderSummary from './OrderSummary';
+import CartPage from '../screens/CartScreen/CartPage';
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -22,16 +23,32 @@ const DropdownLinks = [
   { id: 5, name: "Longsleeve Tshirts", link: "/Longsleeve" },
 ];
 
-const Navbar = ({ handleOrderPopup }) => {
+const Navbar = ({ handleOrderPopup, authenticated }) => {
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const { cartItems, removeFromCart } = useCart();
+  const [auth, setAuth] = useState(authenticated);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleMenu = () => setOpen((prev) => !prev);
   const toggleCart = () => setShowCart((prev) => !prev);
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
+
+  useEffect(() => {
+    const storedAuth = localStorage.getItem('authenticated');
+    if (storedAuth) {
+      setAuth(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('authenticated');
+    setAuth(false);
+    window.location.reload(); // Reload the page to update the navbar
+  };
 
   return (
-    <div className='shadow-md bg-white dark:bg-black dark:text-white duration-200 relative z-40'>
+    <div className='shadow-md bg-white font-semibold dark:bg-black dark:text-white duration-200 relative z-40'>
       {/* Upper Navbar */}
       <div className='bg-white dark:bg-black py-2'>
         <div className='container flex justify-between items-center'>
@@ -49,104 +66,91 @@ const Navbar = ({ handleOrderPopup }) => {
             </div>
 
             {/* Logo */}
-            <div>
-              <Link
-                to='/'
-                className='font-extrabold w-10 flex gap-2 text-black font-robotoCondensed text-lg dark:text-white'
-              >
-                <span className='max-sm:text-[12px] bg-orange-500 p-1 text-white rounded-full font-nunito'>
-                  Otella<span className='text-orange-500 px-1 bg-white rounded-full'>store</span>
-                </span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Search bar */}
-          <div className='flex justify-between items-center gap-4'>
-            <div className='group relative hidden sm:block'>
-              <input
-                type="text"
-                placeholder='Search ...'
-                className='w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-black px-2 py-1 focus:outline-none focus:border-1 focus:border-black dark:border-gray-500 dark:bg-gray-800'
-              />
-              <IoMdSearch className='text-black text-lg group-hover:text-orange-500 absolute top-1/2 -translate-y-1/2 right-3' />
-            </div>
-          </div>
-
-          <div className='flex gap-8'>
-            {/* Cart button */}
-            <button onClick={toggleCart} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-1 group dark:bg-orange-500'>
-              <span className='group-hover:block hidden transition-all duration-200'>Cart</span>
-              <GiShoppingCart className='text-2xl text-white dark:text-black drop-shadow-sm cursor-pointer' />
-            </button>
-
-            {/* Login button */}
-            <button onClick={handleOrderPopup} className='bg-orange-500 transition-all duration-200 text-white dark:text-black font-bold py-1 px-4 rounded-full flex items-center gap-3 group dark:bg-orange-500'>
-              <span className='group-hover:block hidden transition-all duration-200'>Account</span>
-              <FaRegUser className='text-xl cursor-pointer drop-shadow-sm' />
-            </button>
-
-            {/* Dark mode switch */}
-            <Darkmode className='text-2xl' />
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {open && (
-        <div className='md:hidden '>
-          <ul className='flex flex-col items-center gap-5'>
-            {Menu.map((data) => (
-              <li key={data.id}>
-                <Link className='inline-block px-2 hover:font-extrabold duration-1000' to={data.link}>{data.name}</Link>
-              </li>
-            ))}
-            {/* Render DropdownLinks directly in the mobile menu */}
-            {DropdownLinks.map((data) => (
-              <li key={data.id}>
-                <Link className='inline-block px-2 hover:font-extrabold duration-1000' to={data.link}>{data.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Lower Navbar */}
-      <div className='flex justify-center bg-orange-500 text-white font-md text-sm font-robotoCondensed'>
-        <ul className='md:flex hidden items-center gap-5 flex-wrap'>
-          {Menu.map((data) => (
-            <li key={data.id}>
-              <Link className='inline-block px-2 hover:font-extrabold duration-1000' to={data.link}>{data.name}</Link>
-            </li>
-          ))}
-          {/* Simple dropdown and links */}
-          <li className='group relative cursor-pointer hover:text-orange-500'>
-            <Link to='#' className='flex items-center gap-[2px] py-2'>
-              Trending Products <FaCaretDown className='transition-all duration-200 group-hover:rotate-180' />
+            <Link to='/' className='text-2xl font-bold text-gray-800 dark:text-white'>
+              <span>Otella<span className='text-orange-500'>store</span></span>
             </Link>
-            <div className='absolute z-[1000] hidden group-hover:block w-[150px] rounded-md bg-black p-2 text-white shadow-md'>
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <Link to={data.link} className="inline-block w-full rounded-md p-2 hover:bg-orange-500">{data.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
+          </div>
 
-      {/* Cart Dropdown */}
-      {showCart && (
-        <div className="absolute right-0 mt-2 w-80 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
-          <div className="p-4">
-            <h3 className="font-bold text-lg">Cart Summary</h3>
-            <OrderSummary cartItems={cartItems} onRemoveFromCart={removeFromCart} />
-            <Link to="/Cart" className="block text-center mt-4 bg-orange-500 text-white py-2 rounded-lg">Go to Cart</Link>
+          {/* Primary Navigation */}
+          <div className={`md:flex md:items-center md:space-x-8 ${open ? 'block' : 'hidden'}`}>
+            {Menu.map((menu) => (
+              <Link
+                key={menu.id}
+                to={menu.link}
+                className='block mt-4 md:inline-block md:mt-0 text-gray-800 dark:text-white'
+              >
+                {menu.name}
+              </Link>
+            ))}
+            {/* Products Dropdown */}
+            <div className='relative '>
+              <button
+                onClick={toggleDropdown}
+                className='flex items-center mt-4 md:flex md:mt-0 text-gray-800 dark:text-white'
+              >
+                Products <FaCaretDown className='ite' />
+              </button>
+              {dropdownOpen && (
+                <div className='absolute left-0 mt-2 w-48 bg-white dark:bg-black rounded-md shadow-lg'>
+                  {DropdownLinks.map((link) => (
+                    <Link
+                      key={link.id}
+                      to={link.link}
+                      className='block px-4 py-2 text-gray-800 dark:text-white'
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Secondary Navigation */}
+          <div className='flex items-center space-x-4'>
+            {/* Dark mode toggle */}
+            <Darkmode />
+
+            {/* Search Icon */}
+            <IoMdSearch className='text-gray-800 dark:text-white' size={24} />
+              <Link to={CartPage}>
+            {/* Cart Icon */}
+            <div className='relative'>
+              <GiShoppingCart
+                onClick={toggleCart}
+                className='cursor-pointer text-gray-800 dark:text-white'
+                size={24}
+              />
+              <span className='absolute top-0 right-0 bg-red-500 text-white rounded-full px-1 text-xs'>
+                {cartItems.length}
+              </span>
+            </div>
+            </Link>
+
+            {/* User Icon */}
+            <div className='relative'>
+              <FaRegUser
+                onClick={handleOrderPopup}
+                className='cursor-pointer text-gray-800 dark:text-white'
+                size={24}
+              />
+              {auth && (
+                <div className='absolute top-8 right-0 bg-white dark:bg-black rounded-md shadow-lg'>
+                  <Link to="/profile" className='block px-4 py-2 text-gray-800 dark:text-white'>Profile</Link>
+                  <button onClick={handleLogout} className='block w-full text-left px-4 py-2 text-gray-800 dark:text-white'>Logout</button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Dropdown Navigation for Small Screens */}
+
+
+      {/* Cart Drawer */}
+      {showCart && <OrderSummary closeCart={toggleCart} />}
     </div>
   );
 };

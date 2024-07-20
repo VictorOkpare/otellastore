@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -24,12 +24,10 @@ import Popup from './components/Popup';
 import OrderTracking from './screens/OrderTrackingScreen/OrderTracking';
 
 const App = () => {
-  const [orderPopup, setOrderPopup] = React.useState(false);
-  const handleOrderPopup = () => {
-    setOrderPopup(!orderPopup);
-  };
+  const [orderPopup, setOrderPopup] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({
       offset: 100,
       duration: 800,
@@ -39,11 +37,22 @@ const App = () => {
     AOS.refresh();
   }, []);
 
+  useEffect(() => {
+    const storedAuth = localStorage.getItem('authenticated');
+    if (storedAuth) {
+      setAuthenticated(true);
+    }
+  }, []);
+
+  const handleOrderPopup = () => {
+    setOrderPopup(!orderPopup);
+  };
+
   return (
     <CartProvider>
       <Router>
         <div className="bg-white dark:bg-black dark:text-white duration-200">
-          <Navbar handleOrderPopup={handleOrderPopup} />
+          <Navbar handleOrderPopup={handleOrderPopup} authenticated={authenticated} setAuthenticated={setAuthenticated} />
           <main>
             <Routes>
               <Route path="/" element={<HomeScreen />} exact />
@@ -60,7 +69,7 @@ const App = () => {
             </Routes>
           </main>
           <Footer />
-          <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+          <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} setAuthenticated={setAuthenticated} />
         </div>
       </Router>
     </CartProvider>
