@@ -6,7 +6,6 @@ import Darkmode from './Darkmode';
 import { FaRegUser, FaCaretDown, FaTimes, FaBars } from "react-icons/fa";
 import { useCart } from './CartContext';
 import OrderSummary from './OrderSummary';
-import CartPage from '../screens/CartScreen/CartPage';
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -33,6 +32,7 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
   const handleMenu = () => setOpen((prev) => !prev);
   const toggleCart = () => setShowCart((prev) => !prev);
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
+  const closeCart = () => setShowCart(false);
 
   useEffect(() => {
     const storedAuth = localStorage.getItem('authenticated');
@@ -114,7 +114,7 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
 
             {/* Search Icon */}
             <IoMdSearch className='text-gray-800 dark:text-white' size={24} />
-              <Link to={CartPage}>
+
             {/* Cart Icon */}
             <div className='relative'>
               <GiShoppingCart
@@ -122,11 +122,10 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
                 className='cursor-pointer text-gray-800 dark:text-white'
                 size={24}
               />
-              <span className='absolute top-0 right-0 bg-red-500 text-white rounded-full px-1 text-xs'>
+              <span className='absolute top-0 left-0 bg-red-500 text-white rounded-full px-1 text-xs'>
                 {cartItems.length}
               </span>
             </div>
-            </Link>
 
             {/* User Icon */}
             <div className='relative'>
@@ -146,11 +145,27 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
         </div>
       </div>
 
-      {/* Dropdown Navigation for Small Screens */}
-
-
-      {/* Cart Drawer */}
-      {showCart && <OrderSummary closeCart={toggleCart} />}
+      {/* Order Summary Drawer */}
+      {showCart && (
+        <div className='fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end items-start'>
+          <div className='bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg relative w-2/5 h-5/6 overflow-y-auto'>
+            <button
+              className="absolute top-2 right-2 text-gray-500 dark:text-gray-300"
+              onClick={closeCart}
+            >
+              <FaTimes size={24} />
+            </button>
+            <OrderSummary cartItems={cartItems} onRemoveFromCart={(index) => removeFromCart(index)} />
+            <Link
+              to="/Cart"
+              className='mt-6 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition block text-center'
+              onClick={closeCart}
+            >
+              Go to Cart
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

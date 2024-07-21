@@ -27,7 +27,7 @@ const CartPage = () => {
                   <p className="dark:text-gray-300 text-gray-600">Size: {item.size}</p>
                   <p className="dark:text-gray-300 text-gray-600">Quantity: {item.quantity} pcs</p>
                   <p className="dark:text-gray-300 text-gray-600">Design Type: {designTypeDisplay}</p>
-                  <p className="dark:text-gray-300 text-gray-600">Total Price: &#8358;{item.price * item.quantity}</p>
+                  <p className="dark:text-gray-300 text-gray-600">Price: &#8358;{item.price * item.quantity}</p>
                 </div>
               </div>
               <button
