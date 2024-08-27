@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdSearch } from 'react-icons/io';
 import { GiShoppingCart } from "react-icons/gi";
-import Darkmode from './Darkmode';
 import { FaRegUser, FaCaretDown, FaTimes, FaBars } from "react-icons/fa";
+import Darkmode from './Darkmode';
 import { useCart } from './CartContext';
 import OrderSummary from './OrderSummary';
+import Popup from './Popup';
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -22,29 +23,45 @@ const DropdownLinks = [
   { id: 5, name: "Longsleeve Tshirts", link: "/Longsleeve" },
 ];
 
-const Navbar = ({ handleOrderPopup, authenticated }) => {
+const Navbar = ({ handleOrderPopup, authenticated, setAuthenticated }) => {
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const { cartItems, removeFromCart } = useCart();
   const [auth, setAuth] = useState(authenticated);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [orderPopup, setOrderPopup] = useState(false);
+
+  useEffect(() => {
+    const storedAuth = localStorage.getItem('authenticated');
+    if (storedAuth === 'true') {
+      setAuth(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (authenticated) {
+      setAuth(true);
+      localStorage.setItem('authenticated', 'true');
+    } else {
+      setAuth(false);
+      localStorage.removeItem('authenticated');
+    }
+  }, [authenticated]);
 
   const handleMenu = () => setOpen((prev) => !prev);
   const toggleCart = () => setShowCart((prev) => !prev);
   const toggleDropdown = () => setDropdownOpen((prev) => !prev);
   const closeCart = () => setShowCart(false);
-
-  useEffect(() => {
-    const storedAuth = localStorage.getItem('authenticated');
-    if (storedAuth) {
-      setAuth(true);
-    }
-  }, []);
+  const toggleUserMenu = () => setUserMenuOpen((prev) => !prev);
 
   const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     localStorage.removeItem('authenticated');
+    setAuthenticated(false);
     setAuth(false);
-    window.location.reload(); // Reload the page to update the navbar
+    setUserMenuOpen(false);
   };
 
   return (
@@ -83,7 +100,7 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
               </Link>
             ))}
             {/* Products Dropdown */}
-            <div className='relative '>
+            <div className='relative'>
               <button
                 onClick={toggleDropdown}
                 className='flex items-center mt-4 md:flex md:mt-0 text-gray-800 dark:text-white'
@@ -130,14 +147,39 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
             {/* User Icon */}
             <div className='relative'>
               <FaRegUser
-                onClick={handleOrderPopup}
+                onClick={toggleUserMenu}
                 className='cursor-pointer text-gray-800 dark:text-white'
                 size={24}
               />
-              {auth && (
+              {userMenuOpen && (
                 <div className='absolute top-8 right-0 bg-white dark:bg-black rounded-md shadow-lg'>
-                  <Link to="/profile" className='block px-4 py-2 text-gray-800 dark:text-white'>Profile</Link>
-                  <button onClick={handleLogout} className='block w-full text-left px-4 py-2 text-gray-800 dark:text-white'>Logout</button>
+                  {auth ? (
+                    <>
+                      <Link to="/profile" className='block px-4 py-2 text-gray-800 dark:text-white'>Profile</Link>
+                      <button onClick={handleLogout} className='block w-full text-left px-4 py-2 text-gray-800 dark:text-white'>Logout</button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => {
+                          setOrderPopup(true);
+                          setUserMenuOpen(false);
+                        }}
+                        className='block w-full text-left px-4 py-2 text-gray-800 dark:text-white'
+                      >
+                        Login
+                      </button>
+                      <button
+                        onClick={() => {
+                          setOrderPopup(true);
+                          setUserMenuOpen(false);
+                        }}
+                        className='block w-full text-left px-4 py-2 text-gray-800 dark:text-white'
+                      >
+                        Create an Account
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -166,6 +208,7 @@ const Navbar = ({ handleOrderPopup, authenticated }) => {
           </div>
         </div>
       )}
+      <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} setAuthenticated={setAuthenticated} />
     </div>
   );
 };

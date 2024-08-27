@@ -13,6 +13,7 @@ import Longsleeve from './screens/ProductScreen/Longsleeve.jsx';
 import { CartProvider } from './components/CartContext.jsx';
 import CartPage from './screens/CartScreen/CartPage.jsx';
 import CustomizationPage from './screens/Customization page/CustomizationPage.jsx';
+import Profile from './components/Profile.jsx';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -66,6 +67,7 @@ const App = () => {
               <Route path="/Vneck" element={<Vneck />} />
               <Route path="/Cart" element={<CartPage />} />
               <Route path="/Customization" element={<CustomizationPage />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>
           <Footer />
